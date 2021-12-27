@@ -1,0 +1,35 @@
+{
+  "name": "lap1-3",
+  "version": "1.0.0",
+  "description": "làm bài tập",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhanNhuong123/Funix.git"
+  },
+  "keywords": [
+    "funix",
+    "study",
+    "học",
+    "code",
+    "học",
+    "react"
+  ],
+  "author": "Nhường",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhanNhuong123/Funix/issues"
+  },
+  "homepage": "https://github.com/PhanNhuong123/Funix#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
