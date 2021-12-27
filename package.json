@@ -1,35 +1,24 @@
 {
-  "name": "lap1-3",
+  "name": "lap1-5",
   "version": "1.0.0",
-  "description": "làm bài tập",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PhanNhuong123/Funix.git"
   },
-  "keywords": [
-    "funix",
-    "study",
-    "học",
-    "code",
-    "học",
-    "react"
-  ],
-  "author": "Nhường",
+  "author": "",
   "license": "ISC",
+  "lite": "lite-server",
   "bugs": {
     "url": "https://github.com/PhanNhuong123/Funix/issues"
   },
   "homepage": "https://github.com/PhanNhuong123/Funix#readme",
-  "dependencies": {
-    "express": "^4.17.2"
-  },
   "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "lite-server": "^2.6.1"
   }
 }
