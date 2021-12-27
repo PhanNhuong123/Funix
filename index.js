@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 app.use(morgan('combined'));
 app.get('/', (req, res) => {
-    res.send(`<h1>Nhường đẹp trai</h1>`);
+    res.send(`Link github LAP1-3 https://github.com/PhanNhuong123/Funix/tree/LAP1-3`);
 });
 app.listen(port , () => {
     console.log(`http://localhost:${port}`)
