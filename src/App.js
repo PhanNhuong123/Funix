@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import StaFFList from './component/staffListComponent.js';
+import {STAFFS} from './staffs.jsx';
 
 function App() {
+  //console.log(STAFFS)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div id='wrapper'>
+      <div id='header' >Ứng dụng quản lý nhân sự v1.0</div>
+      <div id='body' >
+        <ul>
+          {STAFFS.map( staff => (
+            <StaFFList 
+            key={staff.id}
+            name={staff.name} />
+          ))}
+        </ul>
+      </div>
+    </div> 
   );
 }
 
