@@ -1,6 +1,11 @@
-function StaFFList(staff){
+function StaFFList({props, onClick}){
 return(
-    <li>{staff.name}</li>
+    <li className="staff-name col-4">
+        <button onClick={() => onClick(props)
+        }>
+            {props.name}
+        </button>
+        </li>
 )
 }
 export default StaFFList
