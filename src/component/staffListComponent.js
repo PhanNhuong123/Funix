@@ -1,7 +1,9 @@
 function StaFFList({props, onClick}){
+    console.log(props.br)
 return(
     <li className="staff-name col-4">
-        <button onClick={() => onClick(props)
+        <button style={props.br} onClick={() => onClick(props)
+                
         }>
             {props.name}
         </button>

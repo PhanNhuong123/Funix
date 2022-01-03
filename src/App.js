@@ -3,11 +3,15 @@ import './App.css';
 import StaFFList from './component/staffListComponent.js';
 import {STAFFS} from './staffs.jsx';
 import dateFormat, { masks } from "dateformat";
-
+import {BrInfo} from './background'
 function App() {
   const [infoStaff, setInfostaff] = useState('');
+  const [BrImg, setBrImg] = useState({background: "url(https://previews.123rf.com/images/karenr/karenr1506/karenr150600055/41699857-gray-and-white-square-geometric-repeat-pattern-background-that-is-seamless-and-repeats.jpg)"})
   const HandleClick = props => {
-    setInfostaff(<div className='info'>
+   let ramdomBr = array => Math.floor(Math.random()*array.length)
+   setBrImg(BrInfo[ramdomBr(BrInfo)])
+   console.log(BrImg)
+   setInfostaff(<div style={BrImg} className='info col-10'  >
       <h1>Họ và tên: {props.name}</h1>
        <p>Ngày sinh: {dateFormat(props.doB,"mm/dd/yyyy")}</p>
        <p>Ngày vào công ty: {dateFormat(props.startDate,"mm/dd/yyyy")}</p>
@@ -27,6 +31,7 @@ function App() {
             <StaFFList 
             key={staff.id}
             props={staff}
+            br={BrImg}
             onClick={HandleClick}
             />
           ))}

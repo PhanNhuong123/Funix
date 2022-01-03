@@ -9,11 +9,21 @@
 .col-4{
   width: calc(100%/3) ;
 }
+.col-10{
+  width: calc((100%/12)*10);
+}
+body{
+  background: url(./img/26564155.jpg) ;
+ 
 
+}
 .header{
   padding:12px;
-  background-color: lightskyblue;
-  color: white;
+  /* background-color: white; */
+  color: #041c32;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 20%);
+  font-weight: bold;
+  background-color: #ECB365;
 }
 .body{
 
@@ -39,11 +49,19 @@
 }
 .staff-name button:hover{
   cursor: pointer;
-  opacity: 80%;
+  opacity: 85%;
 }
 .staff-name button:active{
   transform: rotateX(45deg);
 }
 .body .info{
   text-align: center;
+  font-size: large;
+  padding: 40px 0;
+  margin: 28px auto;
+  box-shadow: 0px 4px 5px 4px rgba(0, 0, 0, 20%);
+  transition: ease-in-out 2s;
+  background: url(./img/body.jpg) no-repeat bottom;
+  background-size: cover;
+  color: #041c32;
 }
