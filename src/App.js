@@ -8,28 +8,27 @@ import {BrInfo} from './background'
 const btnLayOut = document.getElementsByClassName('layoutBtn')[0];
 console.log(btnLayOut)
 
-if(btnLayOut !== undefined){
-btnLayOut.addEventListener('onClick' ,handleClick())
-console.log(btnLayOut)
-
-}
-function handleClick(){
-  const staffs = document.getElementsByClassName['staff-name']
-  console.log(staffs)
-  
- for (const staff in staffs){
-   if (staff.classList.contains('col-4')){
-         staff.classList.remove('col-4')
-         staff.classList.add('col-6')
-   }
- }
-}
 
 function App() {
   const ramdomBr = array => Math.floor(Math.random()*array.length)
   const [infoStaff, setInfostaff] = useState('');
   const [BrImg, setBrImg] = useState(BrInfo[ramdomBr(BrInfo)])
-  const HandleClick = props => {
+  const handleClickLayout = () => {
+   let staffs = document.getElementsByClassName('staff-name');
+   console.log(staffs)
+   for (const staff of staffs) {
+      if(staff.classList.contains('col-4')){
+        staff.classList.remove('col-4')
+        staff.classList.add('col-6')
+      } else {
+        staff.classList.remove('col-6')
+        staff.classList.add('col-4')
+      }
+
+   }
+
+  }
+  const handleClick = props => {
   setBrImg(BrInfo[ramdomBr(BrInfo)])
   setInfostaff(
     <div style={BrImg} className='info col-10'  >
@@ -47,7 +46,7 @@ function App() {
     <div className='wrapper'>
       <div className='header' >
         <h1>Ứng dụng quản lý nhân sự v1.0</h1>
-        <button className='layoutBtn'>Layout</button>
+        <button onClick={handleClickLayout} className='layoutBtn'>Layout</button>
       </div>
       <div className='body row' >
         <ul>
@@ -56,7 +55,7 @@ function App() {
             key={staff.id}
             props={staff}
             br={BrImg}
-            onClick={HandleClick}
+            onClick={handleClick}
             />
           ))}
         </ul>
