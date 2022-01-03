@@ -9,21 +9,40 @@
 .col-4{
   width: calc(100%/3) ;
 }
+.col-6{
+  width: 50%;
+}
 .col-10{
   width: calc((100%/12)*10);
 }
 body{
-  background: url(./img/26564155.jpg) ;
+  background: url(https://previews.123rf.com/images/limolida/limolida2001/limolida200100095/139586078-mulberry-washi-paper-texture-background-off-white-natural-fibre-flecks-on-organic-cream-color-all-ov.jpg) ;
  
 
 }
 .header{
   padding:12px;
-  /* background-color: white; */
+
   color: #041c32;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 20%);
   font-weight: bold;
-  background-color: #ECB365;
+  background: url(https://st4.depositphotos.com/1004551/25271/v/1600/depositphotos_252716370-stock-illustration-seamless-you-see-tiles-checked.jpg);
+}
+.header h1{
+  display: inline-block;
+  font-size: large;
+}
+.header button{
+  padding: 6px;
+  margin: 0 24px;
+  border: none;
+  box-shadow: -4px 4px 5px rgba(0, 0, 0, 20%);
+  border-radius: 2px;
+
+}
+.header button:hover{
+  cursor: pointer;
+  opacity: 85%;
 }
 .body{
 
@@ -46,6 +65,8 @@ body{
   font-size: medium;
   border: none;
   box-shadow: -4px 4px 5px rgba(0, 0, 0, 20%);
+  border-radius: 2px;
+
 }
 .staff-name button:hover{
   cursor: pointer;
@@ -60,8 +81,16 @@ body{
   padding: 40px 0;
   margin: 28px auto;
   box-shadow: 0px 4px 5px 4px rgba(0, 0, 0, 20%);
-  transition: ease-in-out 2s;
+  transition: ease-in-out 0.5s;
   background: url(./img/body.jpg) no-repeat bottom;
   background-size: cover;
   color: #041c32;
+  border-radius: 2px;
+  
+}
+.body .info:hover{
+  transform: scale(1.1);
+}
+.body .info p{
+  font-weight: bold;
 }

@@ -1,7 +1,8 @@
 export const BrInfo = [
-    {background: "url(https://cdn.pixabay.com/photo/2017/09/01/10/48/square-2703794_960_720.jpg)"},
-    {background: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQITfD7_NwRj3oK2BtHFkSBTygKr-vGlv8d44ACXb4ZTVHxxwP1)"},
-    {background: "url(https://cdn.wallpapersafari.com/92/47/6qFs7V.jpg)"},
-    {background: "url(https://previews.123rf.com/images/kentoh/kentoh1711/kentoh171100202/90414664-repeating-pattern-with-seamless-pixel-art-background-abstract.jpg)"},
-    {background: "url(https://previews.123rf.com/images/karenr/karenr1506/karenr150600055/41699857-gray-and-white-square-geometric-repeat-pattern-background-that-is-seamless-and-repeats.jpg)"},
+    {background: "url(https://previews.123rf.com/images/paladin12/paladin121902/paladin12190200048/116539809-crumpled-brown-background-paper-texture.jpg)"},
+    {background: "url(https://previews.123rf.com/images/ruslan/ruslan0712/ruslan071200218/2298558-wrinkled-paper-background-paper-background.jpg)"},
+    {background: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfEPmSH9qiWEiuAiPWpa3CU7b0b17fCW34IQ&usqp=CAU)"},
+    {background: "url(https://media.istockphoto.com/photos/paper-texture-white-background-of-crumpled-old-paper-card-with-blank-picture-id1058849314)"},
+    {background: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtZS91O-QYizgdyodFenY1PX1J07UEqfl5fQ&usqp=CAU)"},
+    {background: "url(https://wallpaperaccess.com/full/1659891.jpg)"},
  ]
