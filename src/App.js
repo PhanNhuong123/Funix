@@ -13,8 +13,17 @@ function App() {
 
   const [BrImg, setBrImg] = useState(BrInfo[ramdomBr(BrInfo)])
 
-  const handleClickBr= () => setBrImg(BrInfo[ramdomBr(BrInfo)])
+  const LogicBr = () => {
+    let brRamDom = BrInfo[ramdomBr(BrInfo)]
+    //console.log(x) 
+    if ( BrImg === brRamDom) {handleClickBr()}
+   // console.log(y)
+    return brRamDom
 
+  }
+  const handleClickBr= () =>  setBrImg(LogicBr)
+
+  
   const handleClickLayout = () => {
    let staffs = document.getElementsByClassName('staff-name');
    for (const staff of staffs) {
@@ -29,8 +38,9 @@ function App() {
    }
 
   }
+ 
   const handleClick = props => {
-  
+
   setInfostaff(
     <div style={BrImg} className='info col-10'  >
       <h1>Họ và tên: {props.name}</h1>
