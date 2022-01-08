@@ -2,15 +2,15 @@ import react from "react";
 import "./App.css";
 import Staff from "./components/staff";
 import { STAFFS } from "./staffs";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 function App() {
   const handleClickStaff = (prop) => {
     console.log(prop);
   };
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Ứng dụng quản lý nhân sự</h1>
-      </header>
+      <Header />
       <div className="wrapper row">
         <div className="wrapper__staffs">
           {STAFFS.map((staff) => (
@@ -18,6 +18,7 @@ function App() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
