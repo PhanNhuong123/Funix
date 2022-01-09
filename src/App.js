@@ -3,7 +3,7 @@ import { Routes, Route} from 'react-router-dom'
 import Header from "./components/Header";
 import StaffsPage from "./components/pages/StaffsPage";
 import Footer from "./components/Footer";
-import HandleClickStaff from "./components/HandleClickStaff";
+import StaffInfo from "./components/HandleClickStaff";
 import "./App.css";
 
 
@@ -15,7 +15,7 @@ function App() {
       
         <Routes>
           <Route path="/" element={<StaffsPage />} />
-          <Route path="/staffinfo" element={<HandleClickStaff />} />
+          <Route path="/staffinfo" element={<StaffInfo />} />
         </Routes>
       <Footer />
     </div>

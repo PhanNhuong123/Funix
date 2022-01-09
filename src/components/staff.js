@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import HandleClickStaff from "./HandleClickStaff";
+import StaffInfo from "./HandleClickStaff.js";
 
 const Staff = ({ staff }) => (
   <Link
     to="/staffinfo"
     className="staff col-2"
-    onClick={() => HandleClickStaff(staff)}
+    onClick={() => {console.log(staff)
+      StaffInfo(staff)
+    }}
   >
     <div className="staff__content">
       <img src={staff.image} alt={staff.name} />
