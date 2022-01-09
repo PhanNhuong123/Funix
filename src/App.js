@@ -1,23 +1,22 @@
-import react from "react";
-import "./App.css";
-import Staff from "./components/staff";
-import { STAFFS } from "./staffs";
-import Footer from "./components/Footer";
+import React from "react";
+import { Routes, Route} from 'react-router-dom'
 import Header from "./components/Header";
+import StaffsPage from "./components/pages/StaffsPage";
+import Footer from "./components/Footer";
+import HandleClickStaff from "./components/HandleClickStaff";
+import "./App.css";
+
+
+
 function App() {
-  const handleClickStaff = (prop) => {
-    console.log(prop);
-  };
   return (
     <div className="App">
       <Header />
-      <div className="wrapper row">
-        <div className="wrapper__staffs">
-          {STAFFS.map((staff) => (
-            <Staff key={staff.id} staff={staff} click={handleClickStaff} />
-          ))}
-        </div>
-      </div>
+      
+        <Routes>
+          <Route path="/" element={<StaffsPage />} />
+          <Route path="/staffinfo" element={<HandleClickStaff />} />
+        </Routes>
       <Footer />
     </div>
   );
