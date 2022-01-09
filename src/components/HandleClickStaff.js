@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function StaffInfo({ staff }) {
-  console.log(staff);
+
+function StaffInfo(prop){
+  console.log(prop )
   return (
     <div className="wrapper__path">
       <Link to="/">Nhân viên</Link>
-      <p></p>
+      <p>{prop.name}</p>
     </div>
-  );
-}
-
-function HandleClickStaff(prop) {
-  console.log(prop);
-  console.log(prop.name);
-  return <StaffInfo staff={prop} />;
+  )
+};
+function HandleClickStaff(staff){
+  console.log(staff);
+  console.log(staff.name);
+  return (<StaffInfo name={staff.name} />)
 }
 export default HandleClickStaff;

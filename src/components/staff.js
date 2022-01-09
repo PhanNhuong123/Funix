@@ -6,7 +6,7 @@ const Staff = ({ staff }) => (
     to="/staffinfo"
     className="staff col-2"
     onClick={() => {
-      console.log(staff);
+    
       HandleClickStaff(staff)
     }}
   >
