@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-function StaffInfo(staff) {
+function StaffInfo({ staff }) {
   console.log(staff);
   return (
     <div className="wrapper__path">
@@ -12,8 +11,9 @@ function StaffInfo(staff) {
   );
 }
 
-function HandleClickStaff({prop}){
-   console.log(prop)
-   return <StaffInfo />
+function HandleClickStaff(prop) {
+  console.log(prop);
+  console.log(prop.name);
+  return <StaffInfo staff={prop} />;
 }
 export default HandleClickStaff;

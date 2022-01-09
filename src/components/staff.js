@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import StaffInfo from "./HandleClickStaff.js";
+import HandleClickStaff from "./HandleClickStaff.js";
 
 const Staff = ({ staff }) => (
   <Link
     to="/staffinfo"
     className="staff col-2"
-    onClick={() => {console.log(staff)
-      StaffInfo(staff)
+    onClick={() => {
+      console.log(staff);
+      HandleClickStaff(staff)
     }}
   >
     <div className="staff__content">
