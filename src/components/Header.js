@@ -1,26 +1,30 @@
+import { Link } from 'react-router-dom'
+import handleClick from './HandleClickHeader';
+
+
 function Header() {
   return (
     <div className="header row">
-      <ul className="header__nav">
-        <li className="header__nav__entry js_staffs  js_non-active js_active col-2">
+      <div className="header__nav">
+        <Link to="/" onClick={ e => handleClick(e)} className="header__nav__entry js_staffs   js_active col-2">
           <span>
             <i className="fas fa-users"></i>
           </span>
-          <h3>Nhân viên</h3>
-        </li>
-        <li className="header__nav__entry js_departments js_non-active col-2">
+          <h3  className='js_entry '>Nhân viên</h3>
+        </Link>
+        <Link to="/department" onClick={ e => handleClick(e)} className="header__nav__entry js_departments  col-2">
           <span>
             <i className="fas fa-id-card"></i>
           </span>
-          <h3>Phòng Ban</h3>
-        </li>
-        <li className="header__nav__entry js_salary  js_non-active col-2">
+          <h3 className='js_entry js_non-active'>Phòng Ban</h3>
+        </Link>
+        <Link to="/salary" onClick={ e => handleClick(e)} className="header__nav__entry js_salary   col-2">
           <span>
             <i className="fas fa-money-check-alt"></i>
           </span>
-          <h3>Bảng lương</h3>
-        </li>
-      </ul>
+          <h3 className='js_entry js_non-active'>Bảng lương</h3>
+        </Link>
+      </div> 
     </div>
   );
 }

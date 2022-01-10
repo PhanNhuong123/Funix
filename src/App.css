@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root{
+  --primary-color: #5ac8fa;
+}
 /* grid */
 .row {
   width: 100%;
@@ -32,7 +35,7 @@
 
 .header {
   padding: 12px;
-  background: #5ac8fa;
+  background: var(--primary-color);
   box-shadow: 0 1px 10px rgb(0 0 0 / 20%);
 }
 
@@ -50,6 +53,8 @@
   padding: 4px;
   cursor: pointer;
   border-right: 1px solid white;
+  color: black;
+  text-decoration: none;
 }
 
 .header__nav__entry:last-child {
@@ -63,6 +68,7 @@
 .wrapper {
   padding: 12px 0;
   text-align: center;
+  position: relative;
 }
 .wrapper__staffs {
   width: 100%;
@@ -72,10 +78,13 @@
 /* staff */
 .staff {
   margin: 8px 0;
+  text-decoration: none;
+  color:#551a8b
+
 }
 .staff__content {
   width: 90%;
-  background-color: #5ac8fa;
+  background-color: var(--primary-color);
   box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
   margin: auto;
   transition: ease-in;
@@ -105,7 +114,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #5ac8fa;
+  background: var(--primary-color);
   padding: 12px 0;
 }
 .footer__address {
@@ -125,4 +134,34 @@
 }
 .footer__social__icon:last-child {
   border: none;
+}
+/* css StaffInfo */
+.wrapper__path{
+  display: flex;
+  justify-content: start;
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  color: black;
+  font-size: medium;
+  font-weight: bold;
+}
+.wrapper__path > a{
+  text-decoration: none;
+  color: var(--primary-color);
+  
+}
+.wrapper__path:hover > a{
+  opacity: 80%;
+}
+.wrapper__staff{
+  display: flex;
+  margin: 40px 0 0px 12px;
+}
+.wrapper__staff-img > img {
+  width: 90%;
+}
+.wrapper__staff-info{
+  text-align: left;
+  line-height: 40px;
 }
