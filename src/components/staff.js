@@ -3,12 +3,8 @@ import HandleClickStaff from "./HandleClickStaff.js";
 
 const Staff = ({ staff }) => (
   <Link
-    to="/staffinfo"
+    to={"/staffinfo/" + staff.id }
     className="staff col-2"
-    onClick={() => {
-    
-      HandleClickStaff(staff)
-    }}
   >
     <div className="staff__content">
       <img src={staff.image} alt={staff.name} />
