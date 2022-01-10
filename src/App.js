@@ -5,6 +5,7 @@ import StaffsPage from "./components/pages/StaffsPage";
 import Department from "./components/pages/DepartmentPage"
 import Footer from "./components/Footer";
 import HandleClickStaff from "./components/HandleClickStaff";
+import Salary from "./components/pages/SalaryPage";
 import "./App.css";
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<StaffsPage />} />
           <Route path="/staffinfo/:id" element={<HandleClickStaff />} />
           <Route path="/Department" element={<Department />} />
+          <Route path="/Salary" element={<Salary />} />
         </Routes>
       <Footer />
     </div>

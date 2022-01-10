@@ -182,18 +182,58 @@
   margin:12px  auto;
   padding-bottom: 20px;
   width: 90%;
-  box-shadow: 0px 0px 10px #5ac8fa;
-
+  box-shadow: 0px 0px 10px var(--primary-color);
+  border-radius: 4px;
 }
 .department__info > h4 {
   font-size: x-large;
-  transition: linear 0.3s;
+  transition: linear 0.2s;
+  margin-left: 6px;
 }
 .department__info > h4:hover{
   color: rgb(255, 149, 0);
 }
 .department__info > p {
   font-size: medium;
-  margin-left: 12px;
+  margin-left: 16px;
   margin-top: 20px;
+}
+/* css salaryPage */
+
+.wrapper__salarys{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.salarys__salary{
+ 
+
+}
+.salary__content{
+  width: 90%;
+  text-align: left;
+  margin: 12px auto;
+  box-shadow: 0px 0px 10px var(--primary-color);
+  border-radius: 4px;
+  overflow: hidden;
+
+}
+.salary__content > h4{
+  font-size: x-large;
+  margin-left: 6px;
+
+}
+.salary__content p{
+  font-size: medium;
+  line-height: 36px;
+  margin-left: 16px;
+}
+.salary__content-value{
+  background-color: var(--primary-color);
+  font-weight: bold;
+}
+.salary__content-value > p {
+  margin: auto 0 auto 6px;
+ 
+  
 }
