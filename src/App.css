@@ -17,6 +17,9 @@
 .col-3 {
   width: 25%;
 }
+.col-4{
+  width: 33.333%;
+}
 .col-5 {
   width: 83.333%;
 }
@@ -85,7 +88,7 @@
 .staff__content {
   width: 90%;
   background-color: var(--primary-color);
-  box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 20%);
+  box-shadow: 0px 0px 10px 0px var(--primary-color);
   margin: auto;
   transition: ease-in;
   border-radius: 4px;
@@ -164,4 +167,33 @@
 .wrapper__staff-info{
   text-align: left;
   line-height: 40px;
+}
+/* css department page */
+.wrapper__departments{
+ display: flex;
+ flex-wrap: wrap;
+ text-align: left;
+}
+.departments__department{
+
+
+}
+.department__info{
+  margin:12px  auto;
+  padding-bottom: 20px;
+  width: 90%;
+  box-shadow: 0px 0px 10px #5ac8fa;
+
+}
+.department__info > h4 {
+  font-size: x-large;
+  transition: linear 0.3s;
+}
+.department__info > h4:hover{
+  color: rgb(255, 149, 0);
+}
+.department__info > p {
+  font-size: medium;
+  margin-left: 12px;
+  margin-top: 20px;
 }
