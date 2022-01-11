@@ -6,6 +6,7 @@ import Department from "./components/pages/DepartmentPage"
 import Footer from "./components/Footer";
 import HandleClickStaff from "./components/HandleClickStaff";
 import Salary from "./components/pages/SalaryPage";
+import HandelRenderSearch from "./components/Search";
 import "./App.css";
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/staffinfo/:id" element={<HandleClickStaff />} />
           <Route path="/Department" element={<Department />} />
           <Route path="/Salary" element={<Salary />} />
+          <Route path="/search" element={<HandelRenderSearch />} />
         </Routes>
       <Footer />
     </div>

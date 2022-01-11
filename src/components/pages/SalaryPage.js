@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect} from 'react'
 import { STAFFS } from "../../staffs";
 
 const SalaryInfo = ({ staff, salary }) => (
