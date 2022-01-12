@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Funix/static/css/main.9810b40c.css",
+    "main.js": "/Funix/static/js/main.a032c5a5.js",
+    "static/js/787.9edbf5c2.chunk.js": "/Funix/static/js/787.9edbf5c2.chunk.js",
+    "index.html": "/Funix/index.html",
+    "main.9810b40c.css.map": "/Funix/static/css/main.9810b40c.css.map",
+    "main.a032c5a5.js.map": "/Funix/static/js/main.a032c5a5.js.map",
+    "787.9edbf5c2.chunk.js.map": "/Funix/static/js/787.9edbf5c2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9810b40c.css",
+    "static/js/main.a032c5a5.js"
+  ]
+}
