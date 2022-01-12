@@ -27,6 +27,7 @@ function HandelRenderSearch() {
       <input
         id="search"
         type="text"
+        placeholder="Nhập họ và tên..."
         className="search__input"
         onChange={(e) => handleChange(e)}
       />

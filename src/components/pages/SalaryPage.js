@@ -15,8 +15,8 @@ const SalaryInfo = ({ staff, salary }) => (
 );
 
 function Salary() {
-  const [staffs, setStaffs] = useState(STAFFS);
   let sortResult = STAFFS;
+  const [staffs, setStaffs] = useState(STAFFS);
   const SortData = (selec) => {
     for (let i = 0; i < sortResult.length; i++) {
       sortResult[i].salary = salaryVal(
@@ -55,6 +55,7 @@ function Salary() {
   //   setStaffs(sortResult)
   // },[sortResult]);
   const handleClickSortProp = (e) => {
+   
     const element = e.target;
     if (element.innerHTML === "Lương") {
       element.innerHTML = "Id";
