@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom'
 import handleClick from './HandleClickHeader';
-import HandelRenderSearch from './Search.js';
-import { HandelClickSearchIcon } from './Search.js';
 
 function Header() {
   return (
@@ -27,9 +25,8 @@ function Header() {
         </Link>
       </div> 
       <div className='header__search js_search'>
-      <input className='search__input ' onChange={ e => HandelRenderSearch(e)}  type='text' placeholder='Nhập tên nhân viên...' />
       <Link to="/search" className='search__icon'>
-       <i className=" fas fa-search" onClick={() => HandelClickSearchIcon() } ></i>
+       <i className=" fas fa-search"  ></i>
       </Link>
       </div>
     </div>

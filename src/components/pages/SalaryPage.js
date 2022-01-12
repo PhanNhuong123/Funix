@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect} from 'react'
+import { useState } from "react";
 import { STAFFS } from "../../staffs";
 
 const SalaryInfo = ({ staff, salary }) => (
@@ -15,7 +15,58 @@ const SalaryInfo = ({ staff, salary }) => (
 );
 
 function Salary() {
-  const staffs = STAFFS;
+  const [staffs, setStaffs] = useState(STAFFS);
+  let sortResult = STAFFS;
+  const SortData = (selec) => {
+    for (let i = 0; i < sortResult.length; i++) {
+      sortResult[i].salary = salaryVal(
+        sortResult[i].overTime,
+        sortResult[i].salaryScale
+      );
+    }
+    if (selec === "id") {
+      for (let i = 0; i < sortResult.length; i++) {
+        for (let j = i + 1; j < sortResult.length; j++) {
+          if (sortResult[i].id <= sortResult[j].id) {
+            let max = sortResult[j];
+            sortResult[j] = sortResult[i];
+            sortResult[i] = max;
+
+          }
+        }
+      };
+   
+    } else {
+      for (let i = 0; i < sortResult.length; i++) {
+        for (let j = i + 1; j < sortResult.length; j++) {
+          if (sortResult[i].salary <= sortResult[j].salary) {
+            let max = sortResult[j];
+            sortResult[j] = sortResult[i];
+            sortResult[i] = max;
+          }
+        }
+      };
+      
+    }
+    return  sortResult
+  };
+  
+  // useEffect(()=> {
+  //   setStaffs(sortResult)
+  // },[sortResult]);
+  const handleClickSortProp = (e) => {
+    const element = e.target;
+    if (element.innerHTML === "Lương") {
+      element.innerHTML = "Id";
+      setStaffs(SortData("id"));
+      console.log(staffs)
+    } else {
+      element.innerHTML = "Lương";
+      setStaffs(SortData("salary"));
+      console.log(staffs)
+
+    }
+  };
   const basicSalary = 3000000;
   const overTimeSalary = 200000;
   const salaryVal = (overTime, salaryScale) =>
@@ -23,6 +74,15 @@ function Salary() {
 
   return (
     <div className="wrapper row">
+      <ul className="wrapper__sorts">
+        <li className="sort__label">Sort: </li>
+        <li className="sort__selec" onClick={(e) => handleClickSortProp(e)}>
+          Lương
+        </li>
+        <li className="sort__selec">
+          <i className="fas fa-sort-alpha-down-alt"></i>
+        </li>
+      </ul>
       <div className="wrapper__salarys ">
         {staffs.map((staff) => (
           <div className="salarys__salary col-4">

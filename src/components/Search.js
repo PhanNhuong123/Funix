@@ -1,40 +1,46 @@
 import React from "react";
 import { STAFFS } from "../staffs";
-import { useState} from 'react';
+import { useState } from "react";
 import Staff from "./staff";
 
-function HandelClickSearchIcon() {
-  let elememt = document.getElementsByClassName("search__input")[0];
-  if (elememt.classList.contains("js_active-input")) {
-    elememt.classList.remove("js_active-input");
-  } else {
-    elememt.classList.add("js_active-input");
-  }
-}
+var result = false
 
 
-function fillterData(val) {
-const staffs = STAFFS;
-  console.log(val);
-  const staffsSearch = staffs.filter(staff => staff.name === val);
-  console.log(staffsSearch.length)
-  if(staffsSearch.length === 1){
-      console.log('co')
-      return staffsSearch
-  } else {
-      console.log('khong co')
-       return staffs}
-};
-
-function HandelRenderSearch(e) {
-  const [staffs, setStaffs] = useState(STAFFS)
-  if (e.target) {
-    console.log(fillterData(e.target.value))
-    setStaffs("set")
+function HandelRenderSearch() {
+  const [staffs, setStaffs] = useState(STAFFS);
+  const handleChange = (e) => {
+    result = false ;
+    if (e.target) {
+      const value = e.target.value;
+      const search = staffs.filter((staff) => staff.name === value);
+      document.getElementsByClassName('resutl')[0].style.display = "block"
+      if (search.length !== 0) {
+        result = !result;
+        setStaffs(search);
+    } else { setStaffs(STAFFS)}
+    }
   };
-  console.log(staffs)
-  return <h1>heell</h1>
+
+  return (
+    <div className="wrapper row">
+        <label style={{fontSize : 'large', fontWeight: 'bold'}} for="search">Tìm kiếm nhân viên</label>
+      <input
+        id="search"
+        type="text"
+        className="search__input"
+        onChange={(e) => handleChange(e)}
+      />
+     
+      <p className="resutl" >
+        <i>{(result && `Tìm thấy ${staffs.length} nhân viên`) || 'Không tìm thấy nhân viên'}</i>
+      </p>
+      <div className="wrapper__staffs">
+        {staffs.map((staff) => (
+          <Staff key={staff.id} staff={staff} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export { HandelClickSearchIcon };
 export default HandelRenderSearch;

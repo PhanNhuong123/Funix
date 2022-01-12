@@ -5,8 +5,10 @@ import { STAFFS } from "../../staffs.jsx";
 import Staff from "../staff";
 
 
+const search = []
 function StaffsPage() {
-  const staffs = STAFFS;
+  const staffs =STAFFS;
+ 
   return (
     <div className="wrapper row">
       <div className="wrapper__staffs">
