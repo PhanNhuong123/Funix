@@ -11,10 +11,10 @@ function StaffInfo({ staff }) {
         <p> / {staff.name}</p>
       </div>
       <div className="wrapper__staff">
-        <div className="wrapper__staff-img col-3">
+        <div className="wrapper__staff-img col-3 md-col-4 sm-col-12">
           <img src={staff.image} />
         </div>
-        <div className="wrapper__staff-info col-4">
+        <div className="wrapper__staff-info col-9 md-col-8 sm-col-12">
           <h4>Họ và tên: {staff.name}</h4>
           <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
           <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>

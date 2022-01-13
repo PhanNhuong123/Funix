@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <div className="footer">
-      <ul className="footer__address col-3">
+      <ul className="footer__address col-3 sm-col-5">
         <h4>Our Address</h4>
         <li>121,Clear Water Bay Road Clear Water Bay, Kowloon HONG KONG</li>
         <li>

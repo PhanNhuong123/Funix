@@ -26,6 +26,9 @@
 .col-6 {
   width: 50%;
 }
+.col-9 {
+  width: 75%;
+}
 /* js */
 
 .js_active-input{
@@ -54,7 +57,7 @@
   justify-content: center;
   align-items: center;
   list-style-type: none;
-  font-size: large;
+  font-size: small;
   padding: 4px;
   cursor: pointer;
   border-right: 1px solid white;
@@ -211,6 +214,7 @@
 }
 .wrapper__staff{
   display: flex;
+  flex-wrap: wrap;
   margin: 40px 0 0px 12px;
 }
 .wrapper__staff-img > img {
@@ -282,4 +286,56 @@
   margin: auto 0 auto 6px;
  
   
+}
+/* responsive */
+@media (min-width: 768px) and (max-width: 1024px){
+.md-col-6{
+  width: 50%;
+}
+.md-col-4{
+  width: calc(100%/3);
+}
+
+.md-col-3{
+  width: 25%;
+}
+.md-col-8{
+  width: calc(100% - (100%/3));
+}
+.md-col-12{
+  width: 100%;
+}
+
+  
+}
+
+@media (max-width: 767px) {
+.sm-col-6{
+  width: 50%;
+}
+.sm-col-4{
+  width: calc(100%/3) ;
+}
+.sm-col-5{
+  width: 41.6666%;
+}
+.sm-col-12{
+  width: 100%;
+}
+
+.header__search{
+  top: 36px;
+  padding: 0 4px;
+  box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
+  z-index: 2px;
+}
+.wrapper__staff{
+  margin: 16px auto 4px auto;
+}
+.wrapper__staff-info{
+ margin-left: 16px;
+}
+.salary__content p {
+  line-height: 28px;
+}
 }

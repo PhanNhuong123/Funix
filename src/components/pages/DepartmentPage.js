@@ -14,7 +14,7 @@ function Department() {
     <div className="wrapper ">
       <div className="wrapper__departments row">
         {dpts.map((dpt) => (
-          <div className="departments__department col-4">
+          <div className="departments__department col-4 md-col-6  sm-col-12">
             <DepartmentInfo key={dpt.id} prop={dpt} />
           </div>
         ))}

@@ -1,11 +1,8 @@
 import React from "react";
-import { ReactDOM } from "react";
-import { useState, useEffect } from "react";
 import { STAFFS } from "../../staffs.jsx";
 import Staff from "../staff";
 
 
-const search = []
 function StaffsPage() {
   const staffs =STAFFS;
  

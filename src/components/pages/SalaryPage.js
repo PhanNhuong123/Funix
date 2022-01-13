@@ -29,7 +29,7 @@ function Salary() {
     icon.style.display = "inline";
     const select =
       document.getElementsByClassName("sort__selec-choose")[0].innerHTML;
-    if (icon.innerHTML === '<i class="fas fa-sort-alpha-down-alt"></i>') {
+    if (icon.innerHTML === '<i class="fas fa-sort-alpha-up-alt"></i>') {
       if (select === "Id") {
         for (let i = 0; i < sortResult.length; i++) {
           for (let j = i + 1; j < sortResult.length; j++) {
@@ -52,7 +52,7 @@ function Salary() {
         }
       }
     } else {
-      icon.innerHTML = '<i class="fas fa-sort-alpha-up-alt"></i>';
+      
 
       if (select === "Id") {
         for (let i = 0; i < sortResult.length; i++) {
@@ -80,9 +80,7 @@ function Salary() {
     setStaffs(sortResult);
   };
 
-  // useEffect(()=> {
-  //   setStaffs(sortResult)
-  // },[sortResult]);
+  
   const handleClickSort = () => {
     const icon = document.getElementsByClassName("sort__selec-sort")[0];
     if (icon.innerHTML === '<i class="fas fa-sort-alpha-up-alt"></i>') {
@@ -128,7 +126,7 @@ function Salary() {
       </ul>
       <div className="wrapper__salarys ">
         {staffs.map((staff) => (
-          <div className="salarys__salary col-4">
+          <div className="salarys__salary col-4 md-col-6 sm-col-12">
             <SalaryInfo key={staff.id} staff={staff} salary={salaryVal} />
           </div>
         ))}
