@@ -15,10 +15,8 @@ const SalaryInfo = ({ staff, salary }) => (
 );
 function Salary() {
   const [staffs, setStaffs] = useState(STAFFS);
-  console.log(staffs);
   const SortData = () => {
     let sortResult = [...STAFFS];
-    console.log(staffs);
 
     for (let i = 0; i < sortResult.length; i++) {
       sortResult[i].salary = salaryVal(
@@ -28,12 +26,10 @@ function Salary() {
     }
 
     const icon = document.getElementsByClassName("sort__selec-sort")[0];
+    icon.style.display = "inline";
     const select =
       document.getElementsByClassName("sort__selec-choose")[0].innerHTML;
-    if (icon.innerHTML === '<i class="fas fa-sort-alpha-up-alt"></i>') {
-      console.log(icon.innerHTML);
-      icon.innerHTML = '<i class="fas fa-sort-alpha-down-alt"></i>';
-
+    if (icon.innerHTML === '<i class="fas fa-sort-alpha-down-alt"></i>') {
       if (select === "Id") {
         for (let i = 0; i < sortResult.length; i++) {
           for (let j = i + 1; j < sortResult.length; j++) {
@@ -87,6 +83,16 @@ function Salary() {
   // useEffect(()=> {
   //   setStaffs(sortResult)
   // },[sortResult]);
+  const handleClickSort = () => {
+    const icon = document.getElementsByClassName("sort__selec-sort")[0];
+    if (icon.innerHTML === '<i class="fas fa-sort-alpha-up-alt"></i>') {
+      icon.innerHTML = '<i class="fas fa-sort-alpha-down-alt"></i>';
+      SortData();
+    } else {
+      icon.innerHTML = '<i class="fas fa-sort-alpha-up-alt"></i>';
+      SortData();
+    }
+  };
   const handleClickSortProp = (e) => {
     const select = e.target;
 
@@ -113,8 +119,11 @@ function Salary() {
         >
           Id
         </li>
-        <li className="sort__selec sort__selec-sort" onClick={() => SortData()}>
-          <i class="fas fa-sort-alpha-up-alt"></i>
+        <li
+          className="sort__selec sort__selec-sort"
+          onClick={() => handleClickSort()}
+        >
+          <i className="fas fa-sort-alpha-up-alt"></i>
         </li>
       </ul>
       <div className="wrapper__salarys ">
