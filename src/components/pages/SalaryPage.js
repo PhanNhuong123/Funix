@@ -13,59 +13,89 @@ const SalaryInfo = ({ staff, salary }) => (
     </div>
   </div>
 );
-
 function Salary() {
-  let sortResult = STAFFS;
   const [staffs, setStaffs] = useState(STAFFS);
-  const SortData = (selec) => {
+  console.log(staffs);
+  const SortData = () => {
+    let sortResult = [...STAFFS];
+    console.log(staffs);
+
     for (let i = 0; i < sortResult.length; i++) {
       sortResult[i].salary = salaryVal(
         sortResult[i].overTime,
         sortResult[i].salaryScale
       );
     }
-    if (selec === "id") {
-      for (let i = 0; i < sortResult.length; i++) {
-        for (let j = i + 1; j < sortResult.length; j++) {
-          if (sortResult[i].id <= sortResult[j].id) {
-            let max = sortResult[j];
-            sortResult[j] = sortResult[i];
-            sortResult[i] = max;
 
+    const icon = document.getElementsByClassName("sort__selec-sort")[0];
+    const select =
+      document.getElementsByClassName("sort__selec-choose")[0].innerHTML;
+    if (icon.innerHTML === '<i class="fas fa-sort-alpha-up-alt"></i>') {
+      console.log(icon.innerHTML);
+      icon.innerHTML = '<i class="fas fa-sort-alpha-down-alt"></i>';
+
+      if (select === "Id") {
+        for (let i = 0; i < sortResult.length; i++) {
+          for (let j = i + 1; j < sortResult.length; j++) {
+            if (sortResult[i].id >= sortResult[j].id) {
+              let max = sortResult[j];
+              sortResult[j] = sortResult[i];
+              sortResult[i] = max;
+            }
           }
         }
-      };
-   
+      } else {
+        for (let i = 0; i < sortResult.length; i++) {
+          for (let j = i + 1; j < sortResult.length; j++) {
+            if (sortResult[i].salary >= sortResult[j].salary) {
+              let max = sortResult[j];
+              sortResult[j] = sortResult[i];
+              sortResult[i] = max;
+            }
+          }
+        }
+      }
     } else {
-      for (let i = 0; i < sortResult.length; i++) {
-        for (let j = i + 1; j < sortResult.length; j++) {
-          if (sortResult[i].salary <= sortResult[j].salary) {
-            let max = sortResult[j];
-            sortResult[j] = sortResult[i];
-            sortResult[i] = max;
+      icon.innerHTML = '<i class="fas fa-sort-alpha-up-alt"></i>';
+
+      if (select === "Id") {
+        for (let i = 0; i < sortResult.length; i++) {
+          for (let j = i + 1; j < sortResult.length; j++) {
+            if (sortResult[i].id <= sortResult[j].id) {
+              let max = sortResult[j];
+              sortResult[j] = sortResult[i];
+              sortResult[i] = max;
+            }
           }
         }
-      };
-      
+      } else {
+        for (let i = 0; i < sortResult.length; i++) {
+          for (let j = i + 1; j < sortResult.length; j++) {
+            if (sortResult[i].salary <= sortResult[j].salary) {
+              let max = sortResult[j];
+              sortResult[j] = sortResult[i];
+              sortResult[i] = max;
+            }
+          }
+        }
+      }
     }
-    return  sortResult
+
+    setStaffs(sortResult);
   };
-  
+
   // useEffect(()=> {
   //   setStaffs(sortResult)
   // },[sortResult]);
   const handleClickSortProp = (e) => {
-   
-    const element = e.target;
-    if (element.innerHTML === "Lương") {
-      element.innerHTML = "Id";
-      setStaffs(SortData("id"));
-      console.log(staffs)
-    } else {
-      element.innerHTML = "Lương";
-      setStaffs(SortData("salary"));
-      console.log(staffs)
+    const select = e.target;
 
+    if (select.innerHTML === "Lương") {
+      select.innerHTML = "Id";
+      SortData();
+    } else {
+      select.innerHTML = "Lương";
+      SortData();
     }
   };
   const basicSalary = 3000000;
@@ -77,11 +107,14 @@ function Salary() {
     <div className="wrapper row">
       <ul className="wrapper__sorts">
         <li className="sort__label">Sort: </li>
-        <li className="sort__selec" onClick={(e) => handleClickSortProp(e)}>
-          Lương
+        <li
+          className="sort__selec-choose sort__selec"
+          onClick={(e) => handleClickSortProp(e)}
+        >
+          Id
         </li>
-        <li className="sort__selec">
-          <i className="fas fa-sort-alpha-down-alt"></i>
+        <li className="sort__selec sort__selec-sort" onClick={() => SortData()}>
+          <i class="fas fa-sort-alpha-up-alt"></i>
         </li>
       </ul>
       <div className="wrapper__salarys ">
