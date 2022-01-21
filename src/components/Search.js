@@ -1,47 +1,60 @@
 import React from "react";
 import { STAFFS } from "../staffs";
-import { useState } from "react";
-import Staff from "./staff";
-
-var result = false
+// import { useState } from "react";
+// import Staff from "./staff";
+import { useSelector, useDispatch } from "react-redux";
+import searchSubmuit from "../actions/index";
+// import store from "../store";
+import SearchRender from "./pages/SearchRender";
 
 
 function HandelRenderSearch() {
-  const [staffs, setStaffs] = useState(STAFFS);
-  const handleChange = (e) => {
-    result = false ;
-    if (e.target) {
-      const value = e.target.value;
-      const search = staffs.filter((staff) => staff.name === value);
-      document.getElementsByClassName('resutl')[0].style.display = "block"
-      if (search.length !== 0) {
-        result = !result;
-        setStaffs(search);
-    } else { setStaffs(STAFFS)}
-    }
+  let mess = true
+  console.log('render');
+  const dispatch = useDispatch();
+  const staffs = useSelector(state => state.search.staffs);
+  console.log(staffs);
+
+  const filter = searchValue => {
+    const result = STAFFS.filter(staff => staff.name === searchValue);
+    return result
   };
 
+  function handleSubmit() {
+    const inputElement = document.querySelector("#search");
+    const searchResult = filter(inputElement.value);
+    if(searchResult.length === 0 )
+    {mess = false} else {
+      mess = true
+    }
+    const resultElement = document.querySelector('.result')
+    resultElement.style.display = 'block'
+    dispatch(searchSubmuit(searchResult));
+  };
+  
   return (
     <div className="wrapper row">
-        <label style={{fontSize : 'large', fontWeight: 'bold'}} for="search">Tìm kiếm nhân viên</label>
+      <label style={{ fontSize: "large", fontWeight: "bold" }} htmlFor="search">
+        Tìm kiếm nhân viên
+      </label>
       <input
         id="search"
         type="text"
         placeholder="Nhập họ và tên..."
         className="search__input"
-        onChange={(e) => handleChange(e)}
+        // onChange={(e) => handleChange(e)}
       />
-     
-      <p className="resutl" >
-        <i>{(result && `Tìm thấy ${staffs.length} nhân viên`) || 'Không tìm thấy nhân viên'}</i>
+      <button onClick={() => handleSubmit()}>Search</button>
+
+      <p className="result">
+        <i>
+          {( mess && `Tìm thấy ${staffs.length} nhân viên`) ||
+            "Không tìm thấy nhân viên"}
+        </i>
       </p>
-      <div className="wrapper__staffs">
-        {staffs.map((staff) => (
-          <Staff key={staff.id} staff={staff} />
-        ))}
-      </div>
+     <SearchRender staffs={staffs} />
     </div>
   );
-}
+};
 
 export default HandelRenderSearch;
