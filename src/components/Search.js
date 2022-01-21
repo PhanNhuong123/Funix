@@ -7,31 +7,31 @@ import searchSubmuit from "../actions/index";
 // import store from "../store";
 import SearchRender from "./pages/SearchRender";
 
-
+var mess = true;
 function HandelRenderSearch() {
-  let mess = true
-  console.log('render');
+  console.log("render");
   const dispatch = useDispatch();
-  const staffs = useSelector(state => state.search.staffs);
-  console.log(staffs);
+  const staffs = useSelector((state) => state.search.staffs);
 
-  const filter = searchValue => {
-    const result = STAFFS.filter(staff => staff.name === searchValue);
-    return result
+  const filter = (searchValue) => {
+    const result = STAFFS.filter((staff) => staff.name === searchValue);
+    return result;
   };
 
   function handleSubmit() {
     const inputElement = document.querySelector("#search");
+    const resultElement = document.querySelector(".result");
     const searchResult = filter(inputElement.value);
-    if(searchResult.length === 0 )
-    {mess = false} else {
-      mess = true
+    console.log(searchResult.length);
+    if (searchResult.length !== 0) {
+      mess = true;
+    } else {
+      mess = false;
     }
-    const resultElement = document.querySelector('.result')
-    resultElement.style.display = 'block'
+    resultElement.style.display = "block";
     dispatch(searchSubmuit(searchResult));
-  };
-  
+  }
+
   return (
     <div className="wrapper row">
       <label style={{ fontSize: "large", fontWeight: "bold" }} htmlFor="search">
@@ -48,13 +48,13 @@ function HandelRenderSearch() {
 
       <p className="result">
         <i>
-          {( mess && `Tìm thấy ${staffs.length} nhân viên`) ||
+          {(mess && `Tìm thấy ${staffs.length} nhân viên`) ||
             "Không tìm thấy nhân viên"}
         </i>
       </p>
-     <SearchRender staffs={staffs} />
+      <SearchRender staffs={staffs} />
     </div>
   );
-};
+}
 
 export default HandelRenderSearch;

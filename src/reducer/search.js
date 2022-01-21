@@ -8,7 +8,6 @@ const initialState = {
 function searchReducer(state = initialState, action) {
   if (action.type === "SEARCH_SUBMIT") {
     const newList = [...action.payload];
-    console.log(...action.payload)
     return {
       ...state,
       staffs: newList,
