@@ -1,48 +1,72 @@
-import { Form, Formik } from "formik"
-import { FormGroup, Input, Label } from "reactstrap"
+import { FastField, Form, Formik } from "formik";
+import { FormGroup, Input, Label } from "reactstrap";
+import InputField from "./custom/InputField";
 
+function ModalAddStaff() {
+  const initialValues = {
+    staffName: "",
+    doB: "",
+    startDate: "",
+    department: "",
+    annualLeave: "",
+    overTime: "",
+  };
+  return (
+    <div className="box_modal">
+      <div className="form_add_staff">
+        <Formik initialValues={initialValues}>
+          {(formikPorps) => {
+            const { values, errors, touched } = formikPorps;
+            console.log({ values, errors, touched });
+            return (
+              <Form>
+                <FastField
+                  name="staffName"
+                  component={InputField}
+                  label="Họ và tên"
+                  placeholder="Nhập họ và tên"
+                  type="text"
+                />
+                <FastField
+                  name="doB"
+                  component={InputField}
+                  label="Ngày sinh"
+                  placeholder="dd/mm/yyyy"
+                  type="text"
+                />
+                  <FastField
+                  name="startDate"
+                  component={InputField}
+                  label="Ngày vào công ty"
+                  placeholder="dd/mm/yyyy"
+                  type="text"
+                /> 
+                 <FastField
+                  name="department"
+                  component={InputField}
+                  label="Phòng ban"
+                  type="text"
+                />
+                  <FastField
+                  name="annualLeave"
+                  component={InputField}
+                  label="Ngày nghỉ còn lại"
+                  type="text"
+                />
+                 <FastField
+                  name="overTime"
+                  component={InputField}
+                  label="Ngày làm thêm"
+                  type="text"
+                />
 
-function  ModalAddStaff(){
-    return(
-        <div className="box_modal">
-            <div className="form_add_staff">
-               <Formik>
-                   {formikPorp => {
+              </Form>
+            );
+          }}
+        </Formik>
+      </div>
+    </div>
+  );
+}
 
-                       return (
-                         <Form>
-                             <FormGroup>
-                                 <Label for="staffName">Họ và tên</Label><br/>
-                                 <Input id="staffName" name="name" placeholder="Nhập họ và tên"/>
-                             </FormGroup>
-                             <FormGroup>
-                                 <Label for="doB">Ngày sinh</Label><br/>
-                                 <Input id="doB" name="name" placeholder="dd/mm/yyyy"/>
-                             </FormGroup>
-                             <FormGroup>
-                                 <Label for="startDate">Ngày vào công ty</Label><br/>
-                                 <Input id="startDate" name="startDate" placeholder="dd/mm/yyyy"/>
-                             </FormGroup>
-                             <FormGroup>
-                                 <Label for="department">Phòng ban</Label><br/>
-                                 <Input id="department" name="department"/>
-                             </FormGroup>
-                            <FormGroup>
-                                 <Label for="annualLeave">Ngày nghỉ còn lại</Label><br/>
-                                 <Input id="anualLeave" name="annualLeave"/>
-                             </FormGroup>
-                            <FormGroup>
-                                 <Label for="overTime">Ngày làm thêm</Label><br/>
-                                 <Input id="overTime" name="overTime"/>
-                             </FormGroup>
-                           
-                         </Form>  
-                       )
-                   }}
-               </Formik>
-            </div>
-        </div>
-    )
-};
-
-export default ModalAddStaff
+export default ModalAddStaff;
