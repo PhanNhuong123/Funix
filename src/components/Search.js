@@ -3,7 +3,7 @@ import { STAFFS } from "../staffs";
 // import { useState } from "react";
 // import Staff from "./staff";
 import { useSelector, useDispatch } from "react-redux";
-import searchSubmuit from "../actions/index";
+import {searchSubmuit} from "../actions/index";
 // import store from "../store";
 import SearchRender from "./pages/SearchRender";
 
@@ -12,12 +12,11 @@ function HandelRenderSearch() {
   console.log("render");
   const dispatch = useDispatch();
   const staffs = useSelector((state) => state.search.staffs);
-
   const filter = (searchValue) => {
     const result = STAFFS.filter((staff) => staff.name === searchValue);
     return result;
   };
-
+  
   function handleSubmit() {
     const inputElement = document.querySelector("#search");
     const resultElement = document.querySelector(".result");
@@ -42,9 +41,10 @@ function HandelRenderSearch() {
         type="text"
         placeholder="Nhập họ và tên..."
         className="search__input"
+        
         // onChange={(e) => handleChange(e)}
       />
-      <button onClick={() => handleSubmit()}>Search</button>
+      <button className="search__btn" onClick={() => handleSubmit()}>Search</button>
 
       <p className="result">
         <i>

@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root{
+:root {
   --primary-color: #5ac8fa;
 }
 /* grid */
@@ -17,7 +17,7 @@
 .col-3 {
   width: 25%;
 }
-.col-4{
+.col-4 {
   width: 33.333%;
 }
 .col-5 {
@@ -31,13 +31,50 @@
 }
 /* js */
 
-.js_active-input{
-  display:block !important ;
+.js_active-input {
+  display: block !important ;
 }
-.js_opa{
+.js_opa {
   opacity: 80% !important;
-  
 }
+/* modal */
+
+.box_modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.form_add_staff {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin: 10vh 20vw;
+  padding: 24px 4px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
+
+}
+
+.form_add_staff input {
+ width: 90%;
+ font-size: medium;
+ margin-bottom: 4px;
+ outline-color: var(--primary-color);
+}
+
+.form_add_staff form {
+  width: 60%;
+}
+
+.form_add_staff label{
+  font-weight: bold;
+  font-size: medium;
+}
+
 /* header  */
 
 .header {
@@ -74,25 +111,39 @@
 
 /* header search */
 
-.result{
+.result {
   display: none;
 }
-.header__search{
- position: absolute;
- top: 14px;
- right: 12px;
+.header__search {
+  position: absolute;
+  top: 14px;
+  right: 12px;
 }
 
-.search__input{
- font-size: larger;
- margin: 0 4px;
- display:inline-block;
+.search__input {
+  font-size: medium;
+  margin: 0 4px;
+  display: inline-block;
 }
 
-.search__icon{
- font-size: x-large;
+.search__icon {
+  font-size: x-large;
 }
-
+.search__btn {
+  font-size: medium;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 20%);
+  padding: 2px;
+}
+.search__btn:hover {
+  opacity: 90%;
+}
+.search__btn:active {
+  transform: scale(0.98);
+}
 /* wrapper */
 .wrapper {
   padding: 12px 0;
@@ -105,29 +156,28 @@
   flex-wrap: wrap;
 }
 /* salary page : wrapper sort */
-.wrapper__sorts{
+.wrapper__sorts {
   display: flex;
   position: fixed;
-  top: 58px ;
+  top: 58px;
   right: 12px;
   box-shadow: 0px 0px 5px var(--primary-color);
 }
-.sort__label{
+.sort__label {
   list-style-type: none;
   font-weight: bold;
   font-size: medium;
   margin-right: 4px;
-
 }
 
-.sort__selec{
+.sort__selec {
   list-style-type: none;
   font-size: medium;
   margin-right: 4px;
   cursor: pointer;
 }
 
-.sort__selec-sort{
+.sort__selec-sort {
   display: none;
 }
 
@@ -135,8 +185,7 @@
 .staff {
   margin: 8px 0;
   text-decoration: none;
-  color:#551a8b
-
+  color: #551a8b;
 }
 .staff__content {
   width: 90%;
@@ -173,7 +222,6 @@
   background: var(--primary-color);
   padding: 12px 0;
   box-shadow: 0 -1px 10px rgb(0 0 0 / 20%);
-
 }
 .footer__address {
   list-style-type: none;
@@ -187,14 +235,14 @@
   border-right: 1px solid white;
   cursor: pointer;
 }
-.footer__social__icon:hover{
+.footer__social__icon:hover {
   opacity: 80%;
 }
 .footer__social__icon:last-child {
   border: none;
 }
 /* css StaffInfo */
-.wrapper__path{
+.wrapper__path {
   display: flex;
   justify-content: start;
   position: absolute;
@@ -204,15 +252,14 @@
   font-size: medium;
   font-weight: bold;
 }
-.wrapper__path > a{
+.wrapper__path > a {
   text-decoration: none;
   color: var(--primary-color);
-  
 }
-.wrapper__path:hover > a{
+.wrapper__path:hover > a {
   opacity: 80%;
 }
-.wrapper__staff{
+.wrapper__staff {
   display: flex;
   flex-wrap: wrap;
   margin: 40px 0 0px 12px;
@@ -220,19 +267,19 @@
 .wrapper__staff-img > img {
   width: 90%;
 }
-.wrapper__staff-info{
+.wrapper__staff-info {
   text-align: left;
   line-height: 40px;
 }
 /* css department page */
-.wrapper__departments{
- display: flex;
- flex-wrap: wrap;
- text-align: left;
+.wrapper__departments {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
 }
 
-.department__info{
-  margin:12px  auto;
+.department__info {
+  margin: 12px auto;
   padding-bottom: 20px;
   width: 90%;
   box-shadow: 0px 0px 10px var(--primary-color);
@@ -243,7 +290,7 @@
   transition: linear 0.2s;
   margin-left: 6px;
 }
-.department__info > h4:hover{
+.department__info > h4:hover {
   color: rgb(255, 149, 0);
 }
 .department__info > p {
@@ -253,89 +300,82 @@
 }
 /* css salaryPage */
 
-.wrapper__salarys{
+.wrapper__salarys {
   display: flex;
   flex-wrap: wrap;
 }
 
-
-.salary__content{ 
+.salary__content {
   width: 90%;
   text-align: left;
   margin: 12px auto;
   box-shadow: 0px 0px 10px var(--primary-color);
   border-radius: 4px;
   overflow: hidden;
-
 }
-.salary__content > h4{
+.salary__content > h4 {
   font-size: x-large;
   margin-left: 6px;
-
 }
-.salary__content p{
+.salary__content p {
   font-size: medium;
   line-height: 36px;
   margin-left: 16px;
 }
-.salary__content-value{
+.salary__content-value {
   background-color: var(--primary-color);
   font-weight: bold;
 }
 .salary__content-value > p {
   margin: auto 0 auto 6px;
- 
-  
 }
 /* responsive */
-@media (min-width: 768px) and (max-width: 1024px){
-.md-col-6{
-  width: 50%;
-}
-.md-col-4{
-  width: calc(100%/3);
-}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .md-col-6 {
+    width: 50%;
+  }
+  .md-col-4 {
+    width: calc(100% / 3);
+  }
 
-.md-col-3{
-  width: 25%;
-}
-.md-col-8{
-  width: calc(100% - (100%/3));
-}
-.md-col-12{
-  width: 100%;
-}
-
-  
+  .md-col-3 {
+    width: 25%;
+  }
+  .md-col-8 {
+    width: calc(100% - (100% / 3));
+  }
+  .md-col-12 {
+    width: 100%;
+  }
 }
 
 @media (max-width: 767px) {
-.sm-col-6{
-  width: 50%;
-}
-.sm-col-4{
-  width: calc(100%/3) ;
-}
-.sm-col-5{
-  width: 41.6666%;
-}
-.sm-col-12{
-  width: 100%;
-}
+  .sm-col-6 {
+    width: 50%;
+  }
+  .sm-col-4 {
+    width: calc(100% / 3);
+  }
+  .sm-col-5 {
+    width: 41.6666%;
+  }
+  .sm-col-12 {
+    width: 100%;
+  }
 
-.header__search{
-  top: 36px;
-  padding: 0 4px;
-  box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
-  z-index: 2px;
-}
-.wrapper__staff{
-  margin: 16px auto 4px auto;
-}
-.wrapper__staff-info{
- margin-left: 16px;
-}
-.salary__content p {
-  line-height: 28px;
-}
+  .header__search {
+    top: 36px;
+    padding: 0 4px;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
+    z-index: 2px;
+  }
+  .wrapper__staff {
+    margin: 16px auto 4px auto;
+  }
+  .wrapper__staff-info {
+    margin-left: 16px;
+  }
+  .salary__content p {
+    line-height: 28px;
+  }
 }

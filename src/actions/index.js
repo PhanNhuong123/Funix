@@ -1,4 +1,7 @@
-import { ADD } from "../contants/action-type";
+import { SUBMIT,ADD } from "../contants/action-type";
 
-const searchSubmuit = (payload) => ({ type: ADD, payload });
-export default searchSubmuit;
+const searchSubmuit = (payload) => ({ type: SUBMIT, payload });
+
+const addStaff = (payload) => ({type: ADD, payload})
+
+export  {searchSubmuit , addStaff};

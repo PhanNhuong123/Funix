@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { STAFFS } from "../../staffs";
 
 const SalaryInfo = ({ staff, salary }) => (
@@ -13,11 +14,14 @@ const SalaryInfo = ({ staff, salary }) => (
     </div>
   </div>
 );
+
+
 function Salary() {
-  const [staffs, setStaffs] = useState(STAFFS);
+  const listStaffs = useSelector(state => state.staffs)
+  const [staffs, setStaffs] = useState(listStaffs);
   //hàm sắp xếp dữ liệu theo điều kiện của người dùng 
   const SortData = () => {
-    let sortResult = [...STAFFS];
+    let sortResult = [...listStaffs];
 
     for (let i = 0; i < sortResult.length; i++) {
       sortResult[i].salary = salaryVal(
