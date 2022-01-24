@@ -60,10 +60,13 @@
 }
 
 .form_add_staff input {
- width: 90%;
- font-size: medium;
- margin-bottom: 4px;
- outline-color: var(--primary-color);
+  width: 100%;
+  font-size: medium;
+  margin-bottom: 4px;
+  outline-color: var(--primary-color);
+  border: 1px solid #cccccc;
+  padding: 8px 11px;
+  border-radius: 4px;
 }
 
 .form_add_staff form {
@@ -71,9 +74,14 @@
 }
 
 .form_add_staff label{
-  font-weight: bold;
+  font-weight: 600;
   font-size: medium;
 }
+.form {
+  padding: 1em;
+}
+
+
 
 /* header  */
 

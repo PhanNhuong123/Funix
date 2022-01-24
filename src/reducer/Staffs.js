@@ -4,8 +4,7 @@ const initialState = [...STAFFS];
 function staffsReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_STAFF":
-        console.log(action.type)
-      return state
+      return state;
     default:
       return state;
   }

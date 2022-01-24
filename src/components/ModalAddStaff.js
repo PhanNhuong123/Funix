@@ -1,6 +1,8 @@
 import { FastField, Form, Formik } from "formik";
-import { FormGroup, Input, Label } from "reactstrap";
 import InputField from "./custom/InputField";
+import options from "./custom/option";
+import SelectField from "./custom/Select";
+import * as yup from 'yup'
 
 function ModalAddStaff() {
   const initialValues = {
@@ -11,12 +13,30 @@ function ModalAddStaff() {
     annualLeave: "",
     overTime: "",
   };
+
+  const validationSchema = yup.object().shape({
+    staffName: yup.string().required('Hãy Nhập tên nhân viên'),
+
+    department: yup.string().required('chưa nhập kìa'),
+
+    annualLeave: yup.string().required('chưa nhập kìa'),
+
+    overTime: yup.string().required('chưa nhập kìa'),
+
+
+  }
+
+  )
+  
   return (
     <div className="box_modal">
       <div className="form_add_staff">
-        <Formik initialValues={initialValues}>
-          {(formikPorps) => {
-            const { values, errors, touched } = formikPorps;
+        <Formik 
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        >
+          {(formikProps) => {
+            const { values, errors, touched } = formikProps;
             console.log({ values, errors, touched });
             return (
               <Form>
@@ -43,9 +63,12 @@ function ModalAddStaff() {
                 /> 
                  <FastField
                   name="department"
-                  component={InputField}
+                  component={SelectField}
                   label="Phòng ban"
-                  type="text"
+                
+                  placeholder='Chọn phòng ban'
+                  options={options}
+                  
                 />
                   <FastField
                   name="annualLeave"
