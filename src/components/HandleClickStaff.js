@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { STAFFS } from "../staffs";
+// import { STAFFS } from "../staffs";
 import dateFormat from "dateformat";
+import { useSelector } from "react-redux";
 
 function StaffInfo({ staff }) {
   return (
@@ -29,10 +30,11 @@ function StaffInfo({ staff }) {
 
 function HandleClickStaff() {
   let { id } = useParams();
-  let staff = STAFFS[id];
+  let staff = useSelector(state => state.staffs);
+  console.log(staff)
   return (
     <div className="wrapper row">
-      <StaffInfo staff={staff} />
+      <StaffInfo staff={staff[id]} />
     </div>
   );
 }

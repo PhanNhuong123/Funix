@@ -3,7 +3,7 @@ import { STAFFS } from "../staffs";
 // import { useState } from "react";
 // import Staff from "./staff";
 import { useSelector, useDispatch } from "react-redux";
-import {searchSubmuit} from "../actions/index";
+import {searchSubmit as searchSubmit} from "../actions/index";
 // import store from "../store";
 import SearchRender from "./pages/SearchRender";
 
@@ -28,7 +28,7 @@ function HandelRenderSearch() {
       mess = false;
     }
     resultElement.style.display = "block";
-    dispatch(searchSubmuit(searchResult));
+    dispatch(searchSubmit(searchResult));
   }
 
   return (

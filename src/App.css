@@ -40,32 +40,60 @@
 /* modal */
 
 .box_modal {
+  z-index: 2;
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
+  transition: ease-in-out 0.3s;
+  display: none;
+}
+
+/* validation form*/
+.is-invalid,
+.invalid-feedback {
+  color: #dc3545;
+  border-color: #dc3545 !important;
+}
+
+/* form */
+.btn-close-form {
+  width: 5%;
+  position: absolute;
+  color: var(--primary-color);
+  top: 10vh;
+  right: 12vw;
+  font-size: xx-large;
+  cursor: pointer;
+}
+.btn-close-form:hover {
+  opacity: 85%;
+}
+.btn-close-form:active {
+  transform: scale(1.2);
+  transition: ease-in 0.05s;
 }
 
 .form_add_staff {
   display: flex;
   justify-content: center;
   text-align: left;
-  margin: 10vh 20vw;
-  padding: 24px 4px;
+  margin: 8vh 10vw;
+  padding: 80px 4px 24px 4px;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0px 0px 5px rgb(0 0 0 / 20%);
-
+  transition: ease-in-out 0.3s;
 }
 
 .form_add_staff input {
   width: 100%;
-  font-size: medium;
-  margin-bottom: 4px;
+  font-size: larger;
   outline-color: var(--primary-color);
   border: 1px solid #cccccc;
-  padding: 8px 11px;
+  padding: 6px 8px;
+  margin: 4px 0px;
   border-radius: 4px;
 }
 
@@ -73,7 +101,7 @@
   width: 60%;
 }
 
-.form_add_staff label{
+.form_add_staff label {
   font-weight: 600;
   font-size: medium;
 }
@@ -81,7 +109,27 @@
   padding: 1em;
 }
 
-
+.box_modal__title {
+  position: absolute;
+  font-size: large;
+  top: 12vh;
+  left: 12vw;
+}
+.btn-submit {
+  width: 100%;
+  padding: 4px 0px;
+  margin: 2px 0;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+  transition: ease-in-out 0.1s;
+}
+.btn-submit:hover {
+  transform: scale(1.1);
+}
 
 /* header  */
 
@@ -187,6 +235,26 @@
 
 .sort__selec-sort {
   display: none;
+}
+.title {
+  display: flex;
+  justify-content: start;
+  align-content: center;
+}
+
+.title:first-child {
+  padding-left: 6px;
+  font-size: large;
+}
+.btn-addStaff {
+  cursor: pointer;
+  padding: 0 12px;
+  font-size: x-large;
+  color: var(--primary-color);
+  transition: ease-in 0.1s;
+}
+.btn-addStaff:hover {
+  opacity: 85%;
 }
 
 /* staff */
