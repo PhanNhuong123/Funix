@@ -76,6 +76,8 @@
 }
 
 .form_add_staff {
+  overflow: auto;
+  height: 84vh;
   display: flex;
   justify-content: center;
   text-align: left;
@@ -118,7 +120,7 @@
 .btn-submit {
   width: 100%;
   padding: 4px 0px;
-  margin: 2px 0;
+  margin: 2px 0 14px 0;
   background-color: var(--primary-color);
   border: none;
   border-radius: 4px;
@@ -156,6 +158,10 @@
   border-right: 1px solid white;
   color: black;
   text-decoration: none;
+  transition: ease-in 0.2s;
+}
+.header__nav__entry:active{
+  transform: rotateX(90deg);
 }
 
 .header__nav__entry:last-child {
@@ -440,7 +446,9 @@
   }
 
   .header__search {
-    top: 36px;
+    z-index: 3;
+    position: fixed;
+    top: 90vh;
     padding: 0 4px;
     box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
     z-index: 2px;

@@ -1,9 +1,8 @@
 import { STAFFS } from "../staffs";
 
 const initialState = {
-  staffs: [...STAFFS],
-  activeId: null,
-};
+  staffs: []
+}
 
 function searchReducer(state = initialState, action) {
   if (action.type === "SEARCH_SUBMIT") {

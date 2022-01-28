@@ -1,6 +1,8 @@
 import { STAFFS } from "../staffs";
 
-const initialState = [...STAFFS];
+const staffsLocal = JSON.parse(localStorage.getItem("staffs"));
+const initialState = staffsLocal ? [...staffsLocal] : [...STAFFS];
+
 function staffsReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_STAFF":
@@ -9,6 +11,8 @@ function staffsReducer(state = initialState, action) {
 
       newStaffs.push(action.payload);
       newStaffs[newStaffs.length - 1].id = id;
+      
+      localStorage.setItem("staffs", JSON.stringify(newStaffs));
       console.log(newStaffs);
       return newStaffs;
 

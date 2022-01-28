@@ -21,7 +21,7 @@ function StaffsPage() {
       <div className="title">
         <h3>Nhân viên</h3>
         <div className="btn-addStaff" onClick={HandleClickBtnAdd} >
-          <i class="fas fa-plus-circle"></i>
+          <i className="fas fa-plus-circle"></i>
         </div>
       </div>
       <ModalAddStaff addStaff={addStaff} />

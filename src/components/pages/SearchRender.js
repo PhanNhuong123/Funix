@@ -1,6 +1,7 @@
 import Staff from "../staff";
 
 function SearchRender({ staffs }) {
+  console.log(staffs)
   return (
     <div className="wrapper__staffs">
       {staffs.map((staff) => (
