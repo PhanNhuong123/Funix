@@ -160,7 +160,7 @@
   text-decoration: none;
   transition: ease-in 0.2s;
 }
-.header__nav__entry:active{
+.header__nav__entry:active {
   transform: rotateX(90deg);
 }
 
@@ -260,7 +260,7 @@
   transition: ease-in 0.1s;
 }
 .btn-addStaff:hover {
-  opacity: 85%;
+  transform: scale(1.1);
 }
 
 /* staff */
