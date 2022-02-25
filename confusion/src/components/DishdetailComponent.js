@@ -1,5 +1,4 @@
 import React from "react";
-import reactDom from "react-dom";
 import { Navbar, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
 
 function DishDetail(prop) {
