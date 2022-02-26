@@ -1,8 +1,18 @@
 import React from "react";
+import { Breadcrumb, BreadcrumbItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Navbar, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
 
 function DishDetail(prop) {
-  const dish = prop.dishes;
+  if (!prop) {
+    return <div></div>;
+  }
+  console.log(prop)
+
+  const dish = prop.dish;
+  console.log(dish)
+
+  if (!dish){return (<div></div>)}
   const RenderDish = () => {
     return (
       <React.Fragment>
@@ -46,13 +56,11 @@ function DishDetail(prop) {
       </React.Fragment>
     );
   };
-  const RenderComment = () => {
-    if (!dish) {
-      return <div></div>;
-    }
+  const Comments = dish.comments;
+  const RenderComments = () => {
+  
     console.log(dish)
 
-    const Comments = dish.comments;
     return (
       <React.Fragment>
         <h5>Comments :</h5>
@@ -79,18 +87,32 @@ function DishDetail(prop) {
       </React.Fragment>
     );
   };
-  const Render = () => {
-    if (dish) {
+ 
+    
       return (
-        <React.Fragment>
-          <RenderDish />
-          <RenderComment />
-        </React.Fragment>
-      );
-    }
-    return <div></div>;
-  };
-  return <Render />;
+        <div className="container">
+        <div className="row">
+            <Breadcrumb>
+
+                <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+            </Breadcrumb>
+            <div className="col-12">
+                <h3>{dish.name}</h3>
+                <hr />
+            </div>                
+        </div>
+        <div className="row">
+            <div className="col-12 col-md-5 m-1">
+                <RenderDish dish={dish} />
+            </div>
+            <div className="col-12 col-md-5 m-1">
+                <RenderComments comments={Comments} />
+            </div>
+        </div>
+        </div>
+      )
+
 }
 
 export default DishDetail;
