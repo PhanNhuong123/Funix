@@ -41,14 +41,11 @@ class Main extends Component {
     };
 
     const DishWithId = ({ match }) => {
-      console.log(match);
-
-      console.log(this.state);
       return (
         <DishDetail
           dish={
             this.state.dishes.filter(
-              (dish) => dish.id === parseInt(match.params.dishId)
+              (dish) => dish.id === parseInt(match.params.dishId, 10)
             )[0]
           }
           comments={this.state.comments.filter(
@@ -71,10 +68,10 @@ class Main extends Component {
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="/home" />
         </Switch>
-        <Menu
+        {/* <Menu
           dishes={this.state.dishes}
           onClick={(dishId) => this.onDishSelect(dishId)}
-        />
+        /> */}
         <DishDetail
           dishes={
             this.state.dishes.filter(

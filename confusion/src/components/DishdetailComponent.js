@@ -1,37 +1,30 @@
 import React from "react";
-import { Breadcrumb, BreadcrumbItem } from "react-bootstrap";
+import { Breadcrumb, BreadcrumbItem, CardImg, Navbar } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Navbar, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
+import { CardImgOverlay, CardTitle } from "reactstrap";
 
-function DishDetail(prop) {
-  if (!prop) {
+function DishDetail(props) {
+  if (!props.dish) {
     return <div></div>;
   }
-  console.log(prop)
+  const RenderDish = (prop) => {
+    if (!prop) {
+      return <div></div>;
+    }
+    const dish = prop.dish;
 
-  const dish = prop.dish;
-  console.log(dish)
-
-  if (!dish){return (<div></div>)}
-  const RenderDish = () => {
+    console.log(dish);
     return (
       <React.Fragment>
-        <Navbar dark color="primary">
-          <div className="container">
-            <Navbar href="/">
-              <h5>Dish Detail</h5>{" "}
-            </Navbar>
-          </div>
-        </Navbar>
         <div className="container">
           <div className="row">
-            <div className="col-6 col-md-6 col-sm-12">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <CardImg src={dish.image} alt={dish.name} width="100%" />
               <CardImgOverlay>
                 <CardTitle className="img_label">{dish.label}</CardTitle>
               </CardImgOverlay>
             </div>
-            <div className="col-3 col-md-6 col-sm-12">
+            <div className="col-lg-6 col-md-6 col-sm-12">
               <h4>{dish.name}</h4>
               <p>
                 Category :{" "}
@@ -56,17 +49,19 @@ function DishDetail(prop) {
       </React.Fragment>
     );
   };
-  const Comments = dish.comments;
-  const RenderComments = () => {
-  
-    console.log(dish)
+  const RenderComments = (props) => {
+    if (!props) {
+      return <div></div>;
+    }
+    const comments = props.comments;
+    console.log(comments);
 
     return (
       <React.Fragment>
         <h5>Comments :</h5>
 
-        {Comments.map((comment) => (
-          <div key={comment.id} className="Comment">
+        {comments.map((comment) => (
+          <div key={comment.id} className="Comment col-lg-6 col-md-6 col">
             <p>
               <b>
                 <i>{comment.author}</i>
@@ -87,32 +82,29 @@ function DishDetail(prop) {
       </React.Fragment>
     );
   };
- 
-    
-      return (
-        <div className="container">
-        <div className="row">
-            <Breadcrumb>
 
-                <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
-            </Breadcrumb>
-            <div className="col-12">
-                <h3>{dish.name}</h3>
-                <hr />
-            </div>                
+  return (
+    <div className="container">
+      <div className="row">
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <Link to="/menu">Menu</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+        </Breadcrumb>
+        <div className="col-lg-12">
+          <h3>{props.dish.name}</h3>
+          <hr />
         </div>
-        <div className="row">
-            <div className="col-12 col-md-5 m-1">
-                <RenderDish dish={dish} />
-            </div>
-            <div className="col-12 col-md-5 m-1">
-                <RenderComments comments={Comments} />
-            </div>
-        </div>
-        </div>
-      )
-
+      </div>
+      <div className="row">
+        <RenderDish dish={props.dish} />
+      </div>
+      <div className="row">
+        <RenderComments comments={props.comments} />
+      </div>
+    </div>
+  );
 }
 
 export default DishDetail;

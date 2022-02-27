@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle } from 'reactstrap';
+
 
 function RenderCard({item}) {
 
@@ -21,13 +21,13 @@ function Home(props) {
     return(
         <div className="container">
             <div className="row align-items-start">
-                <div className="col-12 col-md m-1">
+                <div className="col-12 col-md-5 col-lg-5">
                     <RenderCard item={props.dish} />
                 </div>
-                <div className="col-12 col-md m-1">
+                <div className="col-12 col-md-5 col-lg-5 ">
                     <RenderCard item={props.promotion} />
                 </div>
-                <div className="col-12 col-md m-1">
+                <div className="col-12 col-md-5 col-lg-5">
                     <RenderCard item={props.leader} />
                 </div>
             </div>
