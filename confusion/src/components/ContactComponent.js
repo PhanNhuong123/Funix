@@ -6,6 +6,7 @@ import {
   Button,
   Col,
   Form,
+  FormFeedback,
   FormGroup,
   Input,
   Label,
@@ -23,9 +24,16 @@ class Contact extends Component {
       agree: false,
       ContactType: "Tel.",
       message: "",
+      touched: {
+        firstName: false,
+        lastName: false,
+        telNum: false,
+        email: false,
+      },
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
   handleInputChange(event) {
     const target = event.target;
@@ -41,7 +49,50 @@ class Contact extends Component {
     alert("state : " + JSON.stringify(this.state));
     event.preventDefault();
   }
+
+  handleBlur = (field) => (evt) => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true },
+    });
+  };
+
+  validate(firstName, lastName, telNum, email) {
+    const errors = {
+      firstName: "",
+      lastName: "",
+      telNum: "",
+      email: "",
+    };
+    if (this.state.touched.firstName && firstName.length < 3)
+      errors.firstName = "First Name should be >= 3 characters";
+    else if (this.state.touched.firstName && firstName.length > 10)
+      errors.firstName = "First Name should be <= 10 characters";
+
+    if (this.state.touched.lastName && lastName.length < 3)
+      errors.lastName = "Last Name should be >= 3 characters";
+    else if (this.state.touched.lastName && lastName.length > 10)
+      errors.lastName = "Last Name should be <= 10 characters";
+
+    const reg = /^\d+$/;
+    if (this.state.touched.telNum && !reg.test(telNum))
+      errors.telNum = "Tel. Number should contain only numbers";
+
+    if (
+      this.state.touched.email &&
+      email.split("").filter((x) => x === "@").length !== 1
+    )
+      errors.email = "Email should contain a @";
+
+    return errors;
+  }
+
   render() {
+    const errors = this.validate(
+      this.state.firstName,
+      this.state.lastName,
+      this.state.telNum,
+      this.state.email
+    );
     return (
       <div className="container">
         <div className="row">
@@ -118,9 +169,13 @@ class Contact extends Component {
                     id="firstName"
                     name="firstName"
                     placeholder="First Name"
+                    valid={this.state.touched.firstName && errors.firstName === ''}
+                    invalid={errors.firstName !== ''}
+                    onBlur={this.handleBlur("firstName")}
                     value={this.state.firstName}
                     onChange={this.handleInputChange}
                   />
+                  <FormFeedback>{errors.firstName}</FormFeedback>
                 </Col>
               </FormGroup>
               <FormGroup row>
@@ -132,10 +187,15 @@ class Contact extends Component {
                     type="text"
                     id="lastName"
                     name="lastName"
+                    valid={this.state.touched.lastName && errors.lastName === ''}
+                    invalid={errors.lastName !== ''}
+                    onBlur={this.handleBlur("lastName")}
+
                     value={this.state.lastName}
                     placeholder="Last Name"
                     onChange={this.handleInputChange}
                   />
+                  <FormFeedback>{errors.lastName}</FormFeedback>
                 </Col>
               </FormGroup>
               <FormGroup row>
@@ -148,9 +208,14 @@ class Contact extends Component {
                     id="telNum"
                     name="telNum"
                     value={this.state.telNum}
+                    valid={this.state.touched.telNum && errors.telNum === ''}
+                    invalid={errors.telNum !== ''}
+                    onBlur={this.handleBlur("telNum")}
+
                     placeholder="Tel. Num"
                     onChange={this.handleInputChange}
                   />
+                  <FormFeedback>{errors.telNum}</FormFeedback>
                 </Col>
               </FormGroup>
               <FormGroup row>
@@ -163,9 +228,14 @@ class Contact extends Component {
                     id="email"
                     name="email"
                     value={this.state.email}
+                    valid={this.state.touched.email && errors.email === ''}
+                    invalid={errors.email !== ''}
+                    onBlur={this.handleBlur("email")}
+
                     placeholder="Email"
                     onChange={this.handleInputChange}
                   />
+                  <FormFeedback>{errors.email}</FormFeedback>
                 </Col>
               </FormGroup>
               <FormGroup row>
