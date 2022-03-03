@@ -1,5 +1,5 @@
 import React from "react";
-import { Breadcrumb, BreadcrumbItem, CardImg, Navbar } from "reactstrap";
+import { Breadcrumb, BreadcrumbItem, Card, CardImg, Navbar } from "reactstrap";
 import { Link } from "react-router-dom";
 import { CardImgOverlay, CardTitle } from "reactstrap";
 
@@ -18,11 +18,13 @@ function DishDetail(props) {
       <React.Fragment>
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 col-md-6 col-sm-12">
-              <CardImg src={dish.image} alt={dish.name} width="100%" />
-              <CardImgOverlay>
-                <CardTitle className="img_label">{dish.label}</CardTitle>
-              </CardImgOverlay>
+            <div className="col-lg-5 col-md-5 col-sm-12">
+              <Card>
+                <CardImg src={dish.image} alt={dish.name} width="100%" />
+                <CardImgOverlay>
+                  <CardTitle className="img_label">{dish.label}</CardTitle>
+                </CardImgOverlay>
+              </Card>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
               <h4>{dish.name}</h4>
