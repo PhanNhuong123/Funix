@@ -10,15 +10,35 @@ import {
   Modal,
   ModalBody,
   ModalHeader,
-  Navbar,
   Row,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { CardImgOverlay, CardTitle } from "reactstrap";
-import { Control, LocalForm } from "react-redux-form";
+import { Control, Errors, LocalForm } from "react-redux-form";
+import { Loading } from "./LoadingComponent";
+
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !val || val.length < len;
+const minLength = (len) => (val) => val && val.length > len;
 
 function DishDetail(props) {
-  if (!props.dish) {
+  if (props.isLoading) {
+    return (
+      <div className="container">
+        <div className="row">
+          <Loading />
+        </div>
+      </div>
+    );
+  } else if (props.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>{props.errMess}</h4>
+        </div>
+      </div>
+    );
+  } else if (!props.dish) {
     return <div></div>;
   }
   const RenderDish = (prop) => {
@@ -27,7 +47,7 @@ function DishDetail(props) {
     }
     const dish = prop.dish;
 
-    console.log(dish);
+    console.log("dish data: ",dish);
     return (
       <React.Fragment>
         <div className="container">
@@ -68,7 +88,7 @@ function DishDetail(props) {
   function RenderComments({ comments, addComment, dishId }) {
     if (comments != null) {
       const comments = props.comments;
-      console.log(comments);
+      console.log("comments data :",comments);
 
       return (
         <React.Fragment>
@@ -168,6 +188,21 @@ function DishDetail(props) {
                       name="autor"
                       placeholder="Your Name"
                       className="form-control"
+                      validators={{
+                        required,
+                        minLength: minLength(3),
+                        maxLength: maxLength(15),
+                      }}
+                    />
+                    <Errors
+                      className="text-danger"
+                      model={".author"}
+                      show="touched"
+                      messages={{
+                        required: "Required",
+                        minLength: "Must be greater than 2 characters",
+                        maxLength: "Must be 15 numbers or less",
+                      }}
                     />
                   </Col>
                 </Row>
@@ -178,10 +213,19 @@ function DishDetail(props) {
                   <Col md={12}>
                     <Control.textarea
                       model={".comment"}
-                      id=".comment"
-                      name=".comment"
+                      id="comment"
+                      name="comment"
                       className="form-control"
                       rows="6"
+                    />
+                    <Errors
+                      className="text-danger"
+                      model={".comment"}
+                      show="touched"
+                      messages={{
+                        required: "Required",
+                        minLength: "Must be greater than 2 characters",
+                      }}
                     />
                   </Col>
                 </Row>
