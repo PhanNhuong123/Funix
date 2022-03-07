@@ -15,8 +15,22 @@ export const addComment = (dishId, rating, author, comment) => ({
 export const fetchDishes = () => (dispatch) => {
   dispatch(dishesLoading(true));
   return fetch(baseUrl + "dishes")
+  .then(response => {
+    if (response.ok) {
+      return response;
+    } else {
+      var error = new Error('Error ' + response.status + ': ' + response.statusText);
+      error.response = response;
+      throw error;
+    }
+  },
+  error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+  })
     .then((response) => response.json())
-    .then((dishes) => dispatch(addDishes(dishes)));
+    .then((dishes) => dispatch(addDishes(dishes)))
+    .catch(err => dispatch(dishesFailed(err.message)));
 };
 
 export const dishesLoading = () => ({
@@ -38,8 +52,24 @@ export const addDishes = (dishes) => ({
 export const fetchComments = () => (dispatch) => {
   dispatch(commentsLoading(true));
   fetch(baseUrl + "comments")
+  .then(response => {
+    if (response.ok) {
+      return response;
+    } else {
+      var error = new Error('Error ' + response.status + ': ' + response.statusText);
+      error.response = response;
+      throw error;
+    }
+  },
+  error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+  })
     .then((response) => response.json())
-    .then((comments) => dispatch(addComments(comments)));
+    .then((comments) => dispatch(addComments(comments)))
+    .catch(err => dispatch(commentsFailed(err.message)))
+    ;
+    
 };
 
 export const commentsLoading = () => ({
@@ -59,8 +89,26 @@ export const addComments = (comments) => ({
 export const fetchPromotions = () => (dispatch) => {
   dispatch(promotionsLoading(true));
   fetch(baseUrl + "promotions")
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
     .then((response) => response.json())
-    .then((promotions) => dispatch(addPromotions(promotions)));
+    .then((promotions) => dispatch(addPromotions(promotions)))
+    .catch((err) => dispatch(promotionsFailed(err.message)));
 };
 
 export const addPromotions = (promotions) => ({
