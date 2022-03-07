@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { CardImgOverlay, CardTitle } from "reactstrap";
 import { Control, Errors, LocalForm } from "react-redux-form";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../share/baseURL";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length < len;
@@ -54,7 +55,7 @@ function DishDetail(props) {
           <div className="row">
             <div className="col-lg-5 col-md-5 col-sm-12">
               <Card>
-                <CardImg src={dish.image} alt={dish.name} width="100%" />
+                <CardImg src={baseUrl + dish.image} alt={baseUrl + dish.name} width="100%" />
                 <CardImgOverlay>
                   <CardTitle className="img_label">{dish.label}</CardTitle>
                 </CardImgOverlay>
@@ -152,7 +153,7 @@ function DishDetail(props) {
       return (
         <div>
           <Button outline onClick={this.toggleModal}>
-            <i class="fa fa-pencil"> Submit Comment</i>
+            <i className="fa fa-pencil"> Submit Comment</i>
           </Button>
           <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
             <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
