@@ -48,14 +48,18 @@ function DishDetail(props) {
     }
     const dish = prop.dish;
 
-    console.log("dish data: ",dish);
+    console.log("dish data: ", dish);
     return (
       <React.Fragment>
         <div className="container">
           <div className="row">
             <div className="col-lg-5 col-md-5 col-sm-12">
               <Card>
-                <CardImg src={baseUrl + dish.image} alt={baseUrl + dish.name} width="100%" />
+                <CardImg
+                  src={baseUrl + dish.image}
+                  alt={baseUrl + dish.name}
+                  width="100%"
+                />
                 <CardImgOverlay>
                   <CardTitle className="img_label">{dish.label}</CardTitle>
                 </CardImgOverlay>
@@ -86,10 +90,10 @@ function DishDetail(props) {
       </React.Fragment>
     );
   };
-  function RenderComments({ comments, addComment, dishId }) {
+  function RenderComments({ comments, postComment, dishId }) {
     if (comments != null) {
       const comments = props.comments;
-      console.log("comments data :",comments);
+      console.log("comments data :", comments);
 
       return (
         <React.Fragment>
@@ -114,7 +118,7 @@ function DishDetail(props) {
               </i>
             </div>
           ))}
-          <CommentForm dishId={dishId} addComment={addComment} />
+          <CommentForm dishId={dishId} postComment={postComment} />
         </React.Fragment>
       );
     } else {
@@ -142,7 +146,7 @@ function DishDetail(props) {
       this.toggleModal();
       console.log(this.props);
       console.log(JSON.stringify(values));
-      this.props.addComment(
+      this.props.postComment(
         this.props.dishId,
         values.rating,
         values.author,
@@ -265,7 +269,7 @@ function DishDetail(props) {
       <div className="row">
         <RenderComments
           comments={props.comments}
-          addComment={props.addComment}
+          postComment={props.postComment}
           dishId={props.dish.id}
         />
       </div>

@@ -11,11 +11,9 @@ export const Comments = (state = initialState, action) => {
     case ActionTypes.ADD_COMMENT:
       let comment = action.payload;
       let comments = { ...state }.comments;
-      comment.id = state.comments.length;
       comment.rating
       ? (comment.rating = Number(comment.rating))
       : (comment.rating = Number("5"))
-      comment.date = new Date().toISOString();
       comments.push(comment);
       console.log("Comment: ", comments);
       return { ...state, isLoading: false, comments: comments };
