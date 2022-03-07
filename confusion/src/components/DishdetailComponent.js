@@ -12,6 +12,7 @@ import {
   ModalHeader,
   Row,
 } from "reactstrap";
+import { FadeTransform, Fade, Stagger } from "react-animation-components";
 import { Link } from "react-router-dom";
 import { CardImgOverlay, CardTitle } from "reactstrap";
 import { Control, Errors, LocalForm } from "react-redux-form";
@@ -48,18 +49,29 @@ function DishDetail(props) {
     }
     const dish = prop.dish;
 
-    console.log("dish data: ",dish);
+    console.log("dish data: ", dish);
     return (
       <React.Fragment>
         <div className="container">
           <div className="row">
             <div className="col-lg-5 col-md-5 col-sm-12">
-              <Card>
-                <CardImg src={baseUrl + dish.image} alt={baseUrl + dish.name} width="100%" />
-                <CardImgOverlay>
-                  <CardTitle className="img_label">{dish.label}</CardTitle>
-                </CardImgOverlay>
-              </Card>
+              <FadeTransform
+                in
+                transformProps={{
+                  exitTransform: "scale(0.5) translateY(-50%)",
+                }}
+              >
+                <Card>
+                  <CardImg
+                    src={baseUrl + dish.image}
+                    alt={baseUrl + dish.name}
+                    width="100%"
+                  />
+                  <CardImgOverlay>
+                    <CardTitle className="img_label">{dish.label}</CardTitle>
+                  </CardImgOverlay>
+                </Card>
+              </FadeTransform>
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
               <h4>{dish.name}</h4>
@@ -89,31 +101,35 @@ function DishDetail(props) {
   function RenderComments({ comments, addComment, dishId }) {
     if (comments != null) {
       const comments = props.comments;
-      console.log("comments data :",comments);
+      console.log("comments data :", comments);
 
       return (
         <React.Fragment>
-          <h5>Comments :</h5>
+          <Stagger in>
+            <h5>Comments :</h5>
 
-          {comments.map((comment) => (
-            <div key={comment.id} className="Comment col-lg-6 col-md-6 col">
-              <p>
-                <b>
-                  <i>{comment.author}</i>
-                </b>
-              </p>
-              <p>
-                <i>{comment.comment}</i>
-              </p>
-              <i>
-                {new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "2-digit",
-                }).format(new Date(Date.parse(comment.date)))}
-              </i>
-            </div>
-          ))}
+            {comments.map((comment) => (
+              <Fade in>
+              <div key={comment.id} className="Comment col-lg-6 col-md-6 col">
+                <p>
+                  <b>
+                    <i>{comment.author}</i>
+                  </b>
+                </p>
+                <p>
+                  <i>{comment.comment}</i>
+                </p>
+                <i>
+                  {new Intl.DateTimeFormat("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "2-digit",
+                  }).format(new Date(Date.parse(comment.date)))}
+                </i>
+              </div>
+              </Fade>
+            ))}
+          </Stagger>
           <CommentForm dishId={dishId} addComment={addComment} />
         </React.Fragment>
       );
