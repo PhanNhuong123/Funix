@@ -4,7 +4,7 @@ import options from "./custom/option";
 import SelectField from "./custom/Select";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { addStaff } from "../actions";
+import { addStaff, postStaffs } from "../actions";
 import { DEPARTMENTS } from "../staffs";
 import {HandleClickBtnClose} from "./toggleModalBox";
 
@@ -17,7 +17,7 @@ function ModalAddStaff(props) {
         (value) => value.name === values.department
       );
 
-      dispatch(addStaff({ ...values, department }));
+      dispatch(postStaffs({ ...values, department }));
       // console.log({ ...values, department });
     }
   };

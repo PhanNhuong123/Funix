@@ -1,5 +1,5 @@
 import React from "react";
-import { DEPARTMENTS } from "../../staffs";
+import { useSelector } from "react-redux";
 
 const DepartmentInfo = ({ prop }) => (
   <div className="department__info">
@@ -9,7 +9,8 @@ const DepartmentInfo = ({ prop }) => (
 );
 
 function Department() {
-  const dpts = DEPARTMENTS;
+  const dpts =   useSelector(state => state.departments.departments)
+  ;
   return (
     <div className="wrapper ">
       <div className="wrapper__departments row">

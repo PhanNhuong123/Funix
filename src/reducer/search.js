@@ -1,4 +1,4 @@
-import { STAFFS } from "../staffs";
+
 
 const initialState = {
   staffs: []

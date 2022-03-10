@@ -7,7 +7,9 @@ import Footer from "./components/Footer";
 import HandleClickStaff from "./components/HandleClickStaff";
 import Salary from "./components/pages/SalaryPage";
 import HandelRenderSearch from "./components/Search";
+
 import "./App.css";
+
 
 
 

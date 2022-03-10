@@ -11,11 +11,9 @@ var mess = true;
 function HandelRenderSearch() {
   console.log("render");
   const dispatch = useDispatch();
-  const staffs = useSelector((state) => state.staffs);
+  const staffs = useSelector((state) => state.staffs.staffs);
   const staffsSearch = useSelector( state => state.search.staffs)
 
-  console.log(staffsSearch);
-  console.log(staffs);
 
   const filter = (searchValue) => {
     const result = staffs.filter((staff) => staff.name === searchValue);
