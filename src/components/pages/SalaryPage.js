@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSalary } from "../../actions";
 
 const SalaryInfo = ({ staff, salary }) => (
   <div className="salary__content">
@@ -16,8 +17,9 @@ const SalaryInfo = ({ staff, salary }) => (
 
 
 function Salary() {
-  const listStaffs = useSelector(state => state.staffs.staffs)
+  const listStaffs = useSelector(state => state.salary.salary);
   const [staffs, setStaffs] = useState(listStaffs);
+ 
   //hàm sắp xếp dữ liệu theo điều kiện của người dùng 
   const SortData = () => {
     let sortResult = [...listStaffs];
@@ -115,9 +117,9 @@ function Salary() {
     (basicSalary * salaryScale + overTimeSalary * overTime).toFixed(0);
 
   return (
-    <div className="wrapper row">
-      <ul className="wrapper__sorts">
-        <li className="sort__label">Sort: </li>
+    <div  className="wrapper row">
+      <ul  className="wrapper__sorts">
+        <li  className="sort__label">Sort: </li>
         <li
           className="sort__selec-choose sort__selec"
           onClick={(e) => handleClickSortProp(e)}
@@ -133,7 +135,7 @@ function Salary() {
       </ul>
       <div className="wrapper__salarys ">
         {staffs.map((staff) => (
-          <div className="salarys__salary col-4 md-col-6 sm-col-12">
+          <div key={staff.id} className="salarys__salary col-4 md-col-6 sm-col-12">
             <SalaryInfo key={staff.id} staff={staff} salary={salaryVal} />
           </div>
         ))}

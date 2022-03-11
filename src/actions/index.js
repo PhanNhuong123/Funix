@@ -4,7 +4,7 @@ import { baseURl } from "../Url/baseUrl";
 const searchSubmit = (payload) => ({ type: ActionType.SUBMIT, payload });
 
 export const postStaffs = (staffs) => (dispatch) => {
-  fetch(baseURl + "/staffs", {
+  fetch(baseURl + "staffs", {
     method: "POST",
     body: JSON.stringify(staffs),
     headers: {
@@ -31,15 +31,20 @@ export const postStaffs = (staffs) => (dispatch) => {
       }
     )
     .then((response) => response.json())
-    .then((response) => dispatch(staffsAdd(response)));
+    .then((response) => {
+      
+      dispatch(staffsAdd(response));
+      dispatch(fetchSalary());
+      dispatch(fetchDepartments());
+
+    });
 };
 
 const addStaff = (payload) => ({ type: ActionType.ADD_STAFF, payload });
 
-const fetchStaffs = (departments) => (dispatch) => {
+const fetchStaffs = () => (dispatch) => {
   dispatch(staffsLoading(true));
-  console.log("No :",departments)
-  fetch(baseURl + "/staffs")
+  fetch(baseURl + "staffs")
     .then(
       (response) => {
         if (response.ok) {
@@ -58,16 +63,14 @@ const fetchStaffs = (departments) => (dispatch) => {
       }
     )
     .then((response) => response.json())
-    .then((response) =>
-     {
-       dispatch(staffsAdd(response));
-       dispatch(staffs_department(departments))
-      })
+    .then((response) => {
+      dispatch(staffsAdd(response));
+      // dispatch(staffs_department(departments));
+    })
+
+    .then()
     .catch((error) => dispatch(staffsFailed(error.message)));
 };
-
-
-
 
 const staffsLoading = () => ({
   type: ActionType.STAFFS_LOADING,
@@ -83,14 +86,10 @@ const staffsAdd = (staffs) => ({
   payload: staffs,
 });
 
-export const staffs_department = (departments) => ({
-  type: ActionType.STAFFS_DEPARTMENT,
-  payload: departments,
-});
 
 export const fetchDepartments = () => (dispatch) => {
   dispatch(departmentsLoading(true));
-  fetch(baseURl + "/departments")
+  fetch(baseURl + "departments")
     .then(
       (response) => {
         if (response.ok) {
@@ -127,7 +126,7 @@ export const addsDepartments = (departments) => ({
 
 export const fetchSalary = () => (dispatch) => {
   dispatch(salaryLoading(true));
-  fetch(baseURl + "/staffsSalary")
+  fetch(baseURl + "staffsSalary")
     .then(
       (response) => {
         if (response.ok) {
@@ -161,6 +160,8 @@ export const addsSalary = (salary) => ({
   type: ActionType.ADD_SALARY,
   payload: salary,
 });
+
+
 
 export {
   searchSubmit,

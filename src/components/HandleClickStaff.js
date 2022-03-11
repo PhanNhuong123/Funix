@@ -5,7 +5,13 @@ import dateFormat from "dateformat";
 import { useSelector } from "react-redux";
 
 function StaffInfo({ staff }) {
-  console.log(staff.departmentId)
+  let departments = useSelector((state) => state.departments.departments)
+  console.log(departments)
+  const department = departments.filter(
+    (department) => department.id === staff.departmentId
+  );
+  console.log(department)
+  staff.department = department[0].name;
   return (
     <React.Fragment>
       <div className="wrapper__path">
@@ -14,7 +20,7 @@ function StaffInfo({ staff }) {
       </div>
       <div className="wrapper__staff">
         <div className="wrapper__staff-img col-3 md-col-4 sm-col-12">
-          <img src={require("../images/alberto.png")} alt={staff.name}/>
+          <img src={require("../images/alberto.png")} alt={staff.name} />
         </div>
         <div className="wrapper__staff-info col-9 md-col-8 sm-col-12">
           <h4>Họ và tên: {staff.name}</h4>
@@ -31,13 +37,12 @@ function StaffInfo({ staff }) {
 
 function HandleClickStaff() {
   let { id } = useParams();
-  console.log(id)
-  let staff = useSelector(state => state.staffs.staffs);
-  console.log(staff, staff[id])
+  let staff = useSelector((state) => state.staffs.staffs);
+
   return (
     <div className="wrapper row">
-      <StaffInfo staff={staff[id - 1]} />
+      <StaffInfo staff={staff[id]} department />
     </div>
   );
-} 
+}
 export default HandleClickStaff;

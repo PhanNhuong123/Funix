@@ -5,10 +5,7 @@ import Staff from "../staff";
 import { css } from "@emotion/react";
 import ClipLoader from "react-spinners/ClipLoader";
 import {
-  addStaff,
-  fetchDepartments,
-  fetchSalary,
-  fetchStaffs,
+  addStaff
 } from "../../actions/index.js";
 import { HandleClickBtnAdd } from "../toggleModalBox.js";
 
@@ -19,18 +16,11 @@ export const override = css`
 `;
 
 function StaffsPage() {
-  useEffect(() => {
-    dispatch(fetchDepartments());
-    dispatch(fetchSalary());
-    dispatch(fetchStaffs(departments));
-  }, []);
-
+ 
   const staffs = useSelector((state) => state.staffs.staffs);
   const departments = useSelector((state) => state.departments.departments);
   const staffsLoading = useSelector((state) => state.staffs.isLoading);
-  const dispatch = useDispatch();
-  console.log(" state departments: ",departments)
-
+  console.log(" state departments: ", departments);
 
   if (staffsLoading) {
     return (

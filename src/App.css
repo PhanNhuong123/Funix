@@ -380,6 +380,10 @@
   margin-left: 16px;
   margin-top: 20px;
 }
+.departments__department > a {
+  text-decoration: none;
+  color: #000
+}
 /* css salaryPage */
 
 .wrapper__salarys {

@@ -3,9 +3,8 @@ import InputField from "./custom/InputField";
 import options from "./custom/option";
 import SelectField from "./custom/Select";
 import * as yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
-import { addStaff, postStaffs } from "../actions";
-import { DEPARTMENTS } from "../staffs";
+import { useDispatch } from "react-redux";
+import {  postStaffs } from "../actions";
 import {HandleClickBtnClose} from "./toggleModalBox";
 
 function ModalAddStaff(props) {
@@ -13,12 +12,9 @@ function ModalAddStaff(props) {
 
   const HandleSubmitForm = (values) => {
     if (values.name) {
-      const department = DEPARTMENTS.find(
-        (value) => value.name === values.department
-      );
 
-      dispatch(postStaffs({ ...values, department }));
-      // console.log({ ...values, department });
+      dispatch(postStaffs(values));
+      console.log(values);
     }
   };
 
@@ -27,7 +23,7 @@ function ModalAddStaff(props) {
     name: "",
     doB: "",
     startDate: "",
-    department: "",
+    departmentId: "",
     annualLeave: "",
     overTime: "",
     salaryScale: "",
@@ -42,7 +38,7 @@ function ModalAddStaff(props) {
 
     startDate: yup.date().required("Ngày vào công ty không hợp lệ"),
 
-    department: yup.string().required("Thông tin này là bắt buộc"),
+    departmentId: yup.string().required("Thông tin này là bắt buộc"),
 
     annualLeave: yup
       .number("Vui lòng nhập số")
@@ -99,7 +95,7 @@ function ModalAddStaff(props) {
                   type="date"
                 />
                 <FastField
-                  name="department"
+                  name="departmentId"
                   component={SelectField}
                   label="Phòng ban"
                   placeholder="Chọn phòng ban"
