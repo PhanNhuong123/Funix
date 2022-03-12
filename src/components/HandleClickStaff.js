@@ -1,22 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 // import { STAFFS } from "../staffs";
 import dateFormat from "dateformat";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import UpdateStaffs from "./UpdateStaff";
+import { HandleClickBtnAdd } from "./toggleModalBox";
+import { falseAnimation } from "../actions";
+import { CSSTransition } from "react-transition-group";
 
 function StaffInfo({ staff }) {
-  let departments = useSelector((state) => state.departments.departments)
-  console.log(departments)
+  const [ inProp, setInProp] = useState(false)
+  const dispatch = useDispatch();
+  dispatch(falseAnimation())
+  console.log(staff);
+  let departments = useSelector((state) => state.departments.departments);
+  if (!staff || !staff.departmentId) {
+    return <h3>Error : 404 </h3>;
+  }
+  console.log(departments);
   const department = departments.filter(
     (department) => department.id === staff.departmentId
   );
-  console.log(department)
+  console.log(department);
   staff.department = department[0].name;
   return (
     <React.Fragment>
       <div className="wrapper__path">
         <Link to="/">Nhân viên</Link>
         <p> / {staff.name}</p>
+      </div>
+      <div className="staff__btn ">
+        <div
+          className="btn-modalUpdateForm btn-toggle-modal"
+          onClick={() => {HandleClickBtnAdd(); setInProp(!inProp)}}
+        >
+          <i class="fas fa-pen"></i>
+        </div>
+      </div>
+      <div className="staff_update">
+      <CSSTransition in={inProp} timeout={200} classNames="my-node">
+        <div>
+        <UpdateStaffs staff={staff} />
+        </div>
+        </CSSTransition>
       </div>
       <div className="wrapper__staff">
         <div className="wrapper__staff-img col-3 md-col-4 sm-col-12">
@@ -36,12 +62,16 @@ function StaffInfo({ staff }) {
 }
 
 function HandleClickStaff() {
+  
   let { id } = useParams();
-  let staff = useSelector((state) => state.staffs.staffs);
+  const staffs = useSelector((state) => state.staffs.staffs);
+  let staff = staffs.filter((staff) => staff.id === Number(id));
+  console.log(staff);
 
   return (
     <div className="wrapper row">
-      <StaffInfo staff={staff[id]} department />
+      
+      <StaffInfo staff={staff[0]} department />
     </div>
   );
 }

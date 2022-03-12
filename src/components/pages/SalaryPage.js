@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSalary } from "../../actions";
+import { falseAnimation, fetchSalary } from "../../actions";
 
 const SalaryInfo = ({ staff, salary }) => (
   <div className="salary__content">
@@ -17,6 +17,8 @@ const SalaryInfo = ({ staff, salary }) => (
 
 
 function Salary() {
+  const dispatch = useDispatch();
+  dispatch(falseAnimation())
   const listStaffs = useSelector(state => state.salary.salary);
   const [staffs, setStaffs] = useState(listStaffs);
  
@@ -118,6 +120,7 @@ function Salary() {
 
   return (
     <div  className="wrapper row">
+      <div className="title" ><h3>Bảng Lương</h3></div>
       <ul  className="wrapper__sorts">
         <li  className="sort__label">Sort: </li>
         <li

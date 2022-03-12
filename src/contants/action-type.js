@@ -1,4 +1,6 @@
 export const SUBMIT = "SEARCH_SUBMIT";
+export const TRUE= "TRUE"
+export const FALSE= "FALSE"
 export const ADD_STAFF = "ADD_STAFF";
 // STAFFS
 export const ADD_STAFFS = "ADD_STAFFS";

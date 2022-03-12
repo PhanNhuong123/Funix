@@ -3,7 +3,7 @@ import { STAFFS } from "../staffs";
 // import { useState } from "react";
 // import Staff from "./staff";
 import { useSelector, useDispatch } from "react-redux";
-import { searchSubmit as searchSubmit } from "../actions/index";
+import { falseAnimation, searchSubmit as searchSubmit } from "../actions/index";
 // import store from "../store";
 import SearchRender from "./pages/SearchRender";
 
@@ -11,6 +11,7 @@ var mess = true;
 function HandelRenderSearch() {
   console.log("render");
   const dispatch = useDispatch();
+  dispatch(falseAnimation())
   const staffs = useSelector((state) => state.staffs.staffs);
   const staffsSearch = useSelector( state => state.search.staffs)
 

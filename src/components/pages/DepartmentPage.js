@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { falseAnimation } from "../../actions";
 
 const DepartmentInfo = ({ prop }) => (
   <Link to={'/Department/' + prop.name} >
@@ -12,10 +13,13 @@ const DepartmentInfo = ({ prop }) => (
 );
 
 function Department() {
+  const dispatch = useDispatch();
+  dispatch(falseAnimation())
   const dpts =   useSelector(state => state.departments.departments)
   ;
   return (
     <div className="wrapper ">
+      <div className="title"> <h3>Phòng ban</h3></div>
       <div className="wrapper__departments row">
         {dpts.map((dpt) => (
           <div key={dpt.id} className="departments__department col-4 md-col-6  sm-col-12">

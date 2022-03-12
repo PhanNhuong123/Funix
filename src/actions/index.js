@@ -161,7 +161,69 @@ export const addsSalary = (salary) => ({
   payload: salary,
 });
 
+export const patchUpdateStaff = (staff) =>  dispatch => {
+      fetch(baseURl + "staffs", {
+        method: "PATCH",
+        body: JSON.stringify({
+          ...staff
+        }),
+        headers: {'Content-type' : 'application/json; charset = UTF-8', },
+        credentials: "same-origin"
+      })
+      .then(response => {
+        if(response.ok){
+          return response.json()
+        } else {
+           const error = new Error("Error " + response.status + ' : ' + response.statusText);
+           error.response = response;
+           throw error
+        }}
+        , error => {
+          const errMess = new Error(error.message)
+          throw errMess
+        }
+        )
+        .then(response => {
+          dispatch(staffsAdd(response))
+        })
+}
 
+export const fetchDeleteStaff = (id) => dispatch => {
+  fetch(baseURl + "staffs/" + id, {
+    method: "DELETE",
+   
+  })
+  .then(response => {
+    if(response.ok){
+      return response.json()
+    } else {
+       const error = new Error("Error " + response.status + ' : ' + response.statusText);
+       error.response = response;
+       throw error
+    }}
+    , error => {
+      const errMess = new Error(error.message)
+      throw errMess
+    }
+    )
+    .then(response => {
+      dispatch(staffsAdd(response))
+    })
+
+}
+export const toggleAnimation = () => dispatch => {
+  dispatch(falseAnimation())
+  dispatch(trueAnimation())
+}
+
+export const trueAnimation = () =>
+({
+  type: ActionType.TRUE,
+})
+export const falseAnimation = () =>
+({
+  type: ActionType.FALSE,
+})
 
 export {
   searchSubmit,

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { falseAnimation } from "../actions";
 import { baseURl } from "../Url/baseUrl";
 import { override } from "./pages/StaffsPage";
 import Staff from "./staff";
 
 function DepartmentDetail() {
+  const dispatch = useDispatch();
+  dispatch(falseAnimation());
   let { name } = useParams();
   const departments = useSelector((state) => state.departments.departments);
   const department = departments.filter(
@@ -45,18 +48,35 @@ function DepartmentDetail() {
       </div>
     );
   }
-  return (
-    <div className="wrapper row">
-      <div className="title">
-        <h3>Phòng Ban</h3>
+    if (!staffs[0]) {
+    console.log("hello")
+    return (
+      <div className="wrapper row">
+        <div className="wrapper__path">
+          <Link to="/departments">Phòng ban</Link>
+          <p> / {name}</p>
+        </div>
+
+        
+         Không có nhân viên nào trong phòng ban này !!!!
+      
       </div>
-      <div className="wrapper__staffs">
-        {staffs.map((staff) => (
-          <Staff staff={staff} />
-        ))}
+    );
+  } else
+    return (
+      <div className="wrapper row">
+        <div className="wrapper__path">
+          <Link to="/departments">Phòng ban</Link>
+          <p> / {name}</p>
+        </div>
+
+        <div className="wrapper__staffs">
+          {staffs.map((staff) => (
+            <Staff staff={staff} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default DepartmentDetail;

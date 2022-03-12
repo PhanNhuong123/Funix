@@ -1,32 +1,37 @@
 import { FastField, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import InputField from "./custom/InputField";
 import options from "./custom/option";
 import SelectField from "./custom/Select";
+import { HandleClickBtnClose } from "./toggleModalBox";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import {  postStaffs } from "../actions";
-import {HandleClickBtnClose} from "./toggleModalBox";
+import { patchUpdateStaff } from "../actions";
 
-function ModalAddStaff(props) {
+
+
+function FormUpdateStaff(props) {
   const dispatch = useDispatch();
+  const staff = props.staff;
+  
 
   const HandleSubmitForm = (values) => {
     if (values.name) {
-
-      dispatch(postStaffs(values));
+      values.id = staff.id
+      dispatch(patchUpdateStaff(values))
+     
       console.log(values);
     }
   };
 
 
   const initialValues = {
-    name: "",
-    doB: "",
-    startDate: "",
-    departmentId: "",
-    annualLeave: "",
-    overTime: "",
-    salaryScale: "",
+    name: staff.name,
+    doB: '',
+    startDate: '',
+    departmentId: '',
+    annualLeave:'',
+    overTime: '',
+    salaryScale:'',
     image:
       "https://png.pngtree.com/png-clipart/20200225/original/pngtree-businessman-avatar-icon-vector-download-vector-user-icon-avatar-silhouette-social-png-image_5257566.jpg",
   };
@@ -56,7 +61,7 @@ function ModalAddStaff(props) {
   return (
     <div className="box_modal">
       <div className="box_modal__title" >
-        <h4>Thêm nhân viên</h4>
+        <h4>Cập Nhật</h4>
       </div>
       <div className="btn-close-form" onClick={HandleClickBtnClose}>
         <i className="fas fa-times"></i>
@@ -125,7 +130,7 @@ function ModalAddStaff(props) {
                   onClick={(values) => HandleSubmitForm(values)}
                   type="submit"
                 >
-                  Nhập
+                    Cập Nhật
                 </button>
               </Form>
             );
@@ -136,4 +141,4 @@ function ModalAddStaff(props) {
   );
 }
 
-export default ModalAddStaff;
+export default FormUpdateStaff;
